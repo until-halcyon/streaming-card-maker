@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Streaming Card Maker</title>
+<!-- Public GitHub Pages build: v30 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Bebas+Neue&family=Black+Han+Sans&family=Bungee&family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Serif+Display&family=Do+Hyeon&family=Gugi&family=Jua&family=Montserrat:wght@300;400;500;600;700;800;900&family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Noto+Serif+KR:wght@400;500;600;700;800;900&family=Oswald:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Raleway:wght@300;400;500;600;700;800;900&family=Roboto+Condensed:wght@300;400;500;600;700;800;900&family=Song+Myung&display=swap" rel="stylesheet">
+<style>
+:root{--panel:#15171b;--line:#2a2d33;--text:#f5f6f8;--muted:#9399a3;--accent:#e50914;--logo-scale:1}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#0b0c0e;color:var(--text);font-family:"Helvetica Neue",Helvetica,Arial,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}button,input,textarea,select{font:inherit}
+button{user-select:none}.app{display:grid;grid-template-columns:400px 1fr;min-height:100vh}.panel{padding:20px;background:var(--panel);border-right:1px solid var(--line);overflow:auto;max-height:100vh;position:sticky;top:0}.head{display:flex;justify-content:space-between;align-items:start;gap:10px}.eyebrow{font-size:11px;letter-spacing:.15em;color:#aaa}.head h1{margin:5px 0 14px;font-size:22px}.head .btn{padding:5px 8px;font-size:10px;border-radius:5px}.group{border-top:1px solid var(--line);padding:15px 0}.group h2{font-size:13px;margin:0 0 11px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:0 8px}label{display:flex;flex-direction:column;gap:6px;color:#bdc2ca;font-size:12px;margin-bottom:10px}input[type=text],textarea,select{width:100%;padding:9px 10px;border:1px solid #343941;border-radius:7px;background:#101216;color:#fff;outline:none}textarea{min-height:135px;resize:vertical;line-height:1.5}input[type=range],input[type=color]{width:100%;accent-color:#ddd}input[type=color]{padding:4px;height:38px}.upload{display:block;text-align:center;border:1px dashed #4b515a;border-radius:9px;padding:11px;margin-bottom:9px;cursor:pointer;font-size:12px;font-weight:700}.upload input{display:none}.row{display:flex;gap:8px;flex-wrap:wrap}.btn{border:0;border-radius:6px;padding:6px 8px;background:#262a31;color:#fff;cursor:pointer;font-size:11px;line-height:1.2}.btn:hover{background:#30353d}.btn.secondary{background:#1d2026;color:#cfd4db;padding:5px 8px;font-size:10px}.btn.primary{width:100%;background:#fff;color:#111;font-weight:800;padding:10px;font-size:12px}.btn.primary:hover{background:#ececec}.hint{color:#858b94;font-size:11px;line-height:1.5;margin:7px 0 0}.subhint{color:#858b94;font-size:11px;line-height:1.5;margin:-4px 0 10px}
+.modeRow{display:grid;grid-template-columns:1fr 1fr;gap:8px}.toggleBtn{height:38px;border:1px solid #3a4049;background:#111318;border-radius:8px;color:#d7dce3;cursor:pointer;font-weight:700}.toggleBtn.active{background:#fff;color:#111;border-color:#fff}.textOnly.hidden,.imageOnly.hidden{display:none}.inlineStyle{margin-top:10px;padding:12px;border:1px solid #303640;border-radius:10px;background:#101216}.inlineStyle h3{margin:0 0 10px;font-size:12px;color:#d5dae2}.inlineStyle .styleGrid{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}.miniHead{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:8px 0 10px}.miniHead span{font-size:11px;color:#858b94}.cropTools{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}.cropModeBtn{font-size:10px;padding:5px 8px}.cropModeBtn.active{background:#fff;color:#111}.cropHint{font-size:11px;color:#8b919a;line-height:1.5;margin-top:6px}
+.pickerRow{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end}.pickerRow label{margin:0}.pickerBtn{white-space:nowrap;height:32px;padding:5px 8px}.ratingPicker{display:grid;grid-template-columns:repeat(4,42px);gap:10px}.ratingChoice{width:42px;height:42px;padding:0;border:2px solid transparent;border-radius:5px;cursor:pointer;opacity:.72;transition:.15s;background-color:transparent;background-repeat:no-repeat;background-position:center;background-size:28px 28px;font-size:0;color:transparent}.ratingChoice.active{opacity:1;border-color:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.12)}.ratingChoice[data-rating="ALL"]{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABmUlEQVR4nN2WP2vCQBjGnwSJU5yaID1xLFjFrXHoIIhfoAFH6Vz0C3QSp3YulM7F3X6BIjjWbiJ1F27RzUxmSYcmby5/LG25ZOgzvZfL3e/u3ufeRCmXy16xXYXWNKDoGrKQ57hwlzsc5hsUiu0qipcsE1AgRdeIoWpNI1OYKK1pQM3qGNOk6BrU3Gi+cgcW0h6ykkkx32+l9B0F2rUO7roDavenIyz4CgBgsQYm9pgm7DzfRMbedwewWAMAcPv6iOl6lgAmjvSC1SJti52nrvSvSgBb/gqpXalnCxTzAABMN+OvyAPatQ7FQdJZyaS8SAee6icUv/lGka0IkJXCMvfO1xTLNE4EKBpG3KFM48R2+GWQBV+B77dhHiUah4CiYZhuYmKPaQEyjUNA8cKnAWTlkUpbJaUOineyValjwT8ig2fXTxTHXT20ehhaPWr3X0bg+20IFHcUdIq1M57HeIEAx/f9vtS0zmCH3Akr/rEJfivl7OHKkzLTD/X/v/j5Az3HzQ3mOS5Ud7nLDegudygc5hsAyO1X/xP97XyOPbdaQAAAAABJRU5ErkJggg==")}.ratingChoice[data-rating="12"]{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABtklEQVR4nL2WL2zCQBTGP/4kVetA0CCKWDJH1cRWJiu3hCwZgrk53MDgJnEzK46puVVUEBIsZglj050jQVBFBayYIRomFsjauxstLXyq9/rSX7/Xd/cay2azy0oxjcvzA2RSCexC1sxBtz9HqzNFslJM4/YitRPQSplUYs2IfTyfLnflzCtr5iC+Lxjw6zTJuqn3LLwbX+v1tSJAlniomglz8u0L8HB3TMSYQFUbw5ws1usz6RADw8ajNvYFA4BqOQdR4FyxOC1R71kuWJSiAv+WMmpRS6r3LN8PGLUL6+ujq7eN+YTDgWFDlnjfwKAiHMoSD7mRZ75tSclQ4wPD3g74n2SJZ7pXPd0rSzzRoQCjaYKq3hwSDqvlHDU3NHBg2EST1co5ZiVCA2/uP11rWeJRLYvM/FBALwygH2eRAPWeRXy3l0ae2iihgeZkgXpz6IqVlIyv/bsV0AsTBW5jKVcKtA8BQNVMopQlRaBufJrjQEDWeGKNrNenE3/jiaUoRlYkJ00QMUta8xxNosBBFDgiHlSxUbuwDPWEgIpbM2dvMGvmIN7tz/cG7PbnSLY6UwDY26/+Dy3okeVLvqL0AAAAAElFTkSuQmCC")}.ratingChoice[data-rating="15"]{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABYUlEQVR4nGOUkJD4H6vDz+CqwMUgzMnMQAvw9vtfht0PvjEsvvKRgSVWh58hQpOXJhbBgDAnM9wOJlcFLppahgxcFbgYmGgVjNiAMCczAwtOSXMfBh4VIzj/3amtDD/fPmOQ9Ewl2oKHS5swxHBaKOmZysAmJAnnf7lzDu4QSixkwqZQ2NwHxTJqAqwWCpl508QyBgYcQcqraky0AVca/CmzkFfVmOHz7bNEW/rr3XPKLPx8+yzD59tnGYwmnSLKAHxxjc0xOFMpsUCnYSNOy25NysCwFGuioQbA5XOaWYgLkBykb09uwSlHTKFAkoWwBEWJhYM7SNmEJDEKb2zlJdUsZBeWwgg2mlqIDZBayNMs4+MCdE80gyeVPt8+C4X/691zhp9vnzE8XNrEwCYkQZTh2ApvxrO5Jv9JdCRFgOnt9790s+zt978MTLsffKObhbsffGNgWXzlIwMDAwPdmvoAYoRuQFDZ/XsAAAAASUVORK5CYII=")}.ratingChoice[data-rating="19"]{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABeUlEQVR4nM2WMUvDQBiG314DCRJo6VCSSP+BKFhE566CLi6ddVD/g5P/QTrUuWNpIHTrpouxm5tbIYEIpZUMyZDWxYamd7F3xIQ+U3J3uSffd5fvUtI0bdlWq2gpKmqkjDyYLiKMAh89fwaprVZxtVfJRbSiRsqxg7QUNVfZOi1FBckrjSxqpAwprbNxewPZ0OP7Sacbt/My6XQROm6ijSmUDR2Nu+TEX6YFAKhfnnMLv9/H8AZWoo2wBtYv+CcVhS0UiAIAQselUpcGlVLZ0BNrt43Xo7P4ujnsb32WirBycoy5PeYWikIJvYGFz4fH4oSirKeQZylSv0NeDp6fhMZnFopsMOAfUiqKUIRze4yP63vI++yoNsthZuFKCpvdx1NnhYSyoVNlzzMt7iojLARAFXXPtFJGstntTcOiOewLjS88wt1Iaei41Ekd/J55m+1/MX+jT53Sy+HpUvAlM0Gmi6gw2XQRgYwCvzDhKPAh9fwZABT2q/8D8vZu8/MH/c0AAAAASUVORK5CYII=")}
+.stageWrap{min-width:0;padding:18px}.toolbar{display:flex;justify-content:space-between;color:#8f959d;font-size:12px;padding:0 4px 8px}.stageFrame{border:1px solid #22262d;border-radius:12px;padding:18px;min-height:calc(100vh - 66px);display:flex;align-items:center;justify-content:center;overflow:auto;background:radial-gradient(circle,#181b20,#0b0c0e 70%)}
+.card{position:relative;width:1200px;height:900px;flex:none;overflow:hidden;background:#111;transform-origin:center;cursor:grab;touch-action:none}.card.bg-dragging{cursor:grabbing}.cropGrid{position:absolute;inset:0;z-index:4;pointer-events:none;display:none;background-image:linear-gradient(to right,transparent calc(33.333% - .5px),rgba(255,255,255,.3) 33.333%,transparent calc(33.333% + .5px),transparent calc(66.666% - .5px),rgba(255,255,255,.3) 66.666%,transparent calc(66.666% + .5px)),linear-gradient(to bottom,transparent calc(33.333% - .5px),rgba(255,255,255,.3) 33.333%,transparent calc(33.333% + .5px),transparent calc(66.666% - .5px),rgba(255,255,255,.3) 66.666%,transparent calc(66.666% + .5px));box-shadow:inset 0 0 0 2px rgba(255,255,255,.5)}.card.crop-mode .cropGrid{display:block}.card.crop-mode{cursor:move}.cropCenter{position:absolute;left:50%;top:50%;width:18px;height:18px;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.65);border-radius:50%}.cropCenter::before,.cropCenter::after{content:"";position:absolute;background:rgba(255,255,255,.65)}.cropCenter::before{left:50%;top:-7px;width:1px;height:32px}.cropCenter::after{top:50%;left:-7px;height:1px;width:32px}.bg{position:absolute;inset:-12%;background:linear-gradient(135deg,#151515,#454545);background-size:cover;background-position:50% 50%;will-change:transform,filter;background-repeat:no-repeat;pointer-events:none}.shade{position:absolute;inset:0;background:rgba(0,0,0,.45);pointer-events:none}.vignette{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.76),rgba(0,0,0,.16) 52%,rgba(0,0,0,.2)),linear-gradient(180deg,transparent 0 43%,rgba(16,16,16,.16) 54%,rgba(24,24,24,.82) 76%,#181818 92%,#181818 100%)}.close{position:absolute;right:24px;top:18px;width:42px;height:42px;border-radius:50%;border:2px solid rgba(255,255,255,.25);background:rgba(0,0,0,.25);z-index:7}.close::before,.close::after{content:"";position:absolute;left:50%;top:50%;width:24px;height:2.5px;background:#fff;border-radius:2px;transform-origin:center}.close::before{transform:translate(-50%,-50%) rotate(45deg)}.close::after{transform:translate(-50%,-50%) rotate(-45deg)}
+.logoHolder{position:absolute;left:64px;top:390px;max-width:760px;max-height:260px;cursor:grab;touch-action:none;z-index:6}.logoHolder.dragging{cursor:grabbing}.logoImg,.logoText{transform:scale(var(--logo-scale));transform-origin:left bottom}.logoImg{display:block;width:auto;height:auto;max-width:720px;max-height:230px;object-fit:contain;object-position:left bottom}.logoText{display:block;white-space:pre-line;line-height:1;font-size:82px;font-weight:800;letter-spacing:-.045em;color:#fff;font-family:"Helvetica Neue",Helvetica,Arial,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}.hide{display:none!important}
+.actions{position:absolute;left:64px;top:520px;display:flex;align-items:center;gap:13px;z-index:5}.play{height:56px;padding:0 23px;border:0;border-radius:7px;background:#fff;color:#111;display:flex;align-items:center;gap:12px;font-size:21px;font-weight:700;letter-spacing:-.02em}.tri{width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:19px solid #111}.round{width:40px;height:40px;padding:0;border-radius:50%;border:2px solid rgba(255,255,255,.6);background:rgba(20,20,20,.2);color:#fff;display:flex;align-items:center;justify-content:center;line-height:1}.round.plus svg{width:22px;height:22px;display:block;stroke:#fff;stroke-width:1.85;stroke-linecap:round;stroke-linejoin:round;fill:none;overflow:visible;flex:none;transform:translate(-.6px,-.6px)}.round.thumb svg{width:24px;height:24px;display:block;stroke:#fff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;fill:none;overflow:visible;flex:none;transform:translate(.8px,-.5px)}
+.tagline{position:absolute;left:650px;top:330px;width:470px;font-size:24px;line-height:1.5;font-weight:700;letter-spacing:-.025em;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.98),0 3px 8px rgba(0,0,0,.92),0 8px 22px rgba(0,0,0,.72);-webkit-text-stroke:.35px rgba(0,0,0,.45);filter:drop-shadow(0 2px 3px rgba(0,0,0,.55));white-space:pre-wrap;word-break:keep-all;overflow-wrap:break-word;cursor:grab;touch-action:none;z-index:6}.tagline.dragging{cursor:grabbing}.meta{position:absolute;left:64px;top:610px;bottom:56px;width:650px;display:flex;flex-direction:column}.metaTop{display:flex;gap:13px;align-items:center;color:#d2d4d8;font-size:18px;font-weight:400;letter-spacing:-.01em;margin-bottom:12px;flex:none}.quality{font-size:13px;border:1px solid #d4d6da;border-radius:3px;padding:1px 5px}.ageRow{margin-bottom:16px;flex:none}.ageChip{width:40px;height:40px;padding:0;display:block;border-radius:4px;background-color:transparent;background-repeat:no-repeat;background-position:center;background-size:34px 34px;font-size:0;color:transparent;line-height:0}.ageChip.all{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABmUlEQVR4nN2WP2vCQBjGnwSJU5yaID1xLFjFrXHoIIhfoAFH6Vz0C3QSp3YulM7F3X6BIjjWbiJ1F27RzUxmSYcmby5/LG25ZOgzvZfL3e/u3ufeRCmXy16xXYXWNKDoGrKQ57hwlzsc5hsUiu0qipcsE1AgRdeIoWpNI1OYKK1pQM3qGNOk6BrU3Gi+cgcW0h6ykkkx32+l9B0F2rUO7roDavenIyz4CgBgsQYm9pgm7DzfRMbedwewWAMAcPv6iOl6lgAmjvSC1SJti52nrvSvSgBb/gqpXalnCxTzAABMN+OvyAPatQ7FQdJZyaS8SAee6icUv/lGka0IkJXCMvfO1xTLNE4EKBpG3KFM48R2+GWQBV+B77dhHiUah4CiYZhuYmKPaQEyjUNA8cKnAWTlkUpbJaUOineyValjwT8ig2fXTxTHXT20ehhaPWr3X0bg+20IFHcUdIq1M57HeIEAx/f9vtS0zmCH3Akr/rEJfivl7OHKkzLTD/X/v/j5Az3HzQ3mOS5Ud7nLDegudygc5hsAyO1X/xP97XyOPbdaQAAAAABJRU5ErkJggg==")}.ageChip.r12{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABtklEQVR4nL2WL2zCQBTGP/4kVetA0CCKWDJH1cRWJiu3hCwZgrk53MDgJnEzK46puVVUEBIsZglj050jQVBFBayYIRomFsjauxstLXyq9/rSX7/Xd/cay2azy0oxjcvzA2RSCexC1sxBtz9HqzNFslJM4/YitRPQSplUYs2IfTyfLnflzCtr5iC+Lxjw6zTJuqn3LLwbX+v1tSJAlniomglz8u0L8HB3TMSYQFUbw5ws1usz6RADw8ajNvYFA4BqOQdR4FyxOC1R71kuWJSiAv+WMmpRS6r3LN8PGLUL6+ujq7eN+YTDgWFDlnjfwKAiHMoSD7mRZ75tSclQ4wPD3g74n2SJZ7pXPd0rSzzRoQCjaYKq3hwSDqvlHDU3NHBg2EST1co5ZiVCA2/uP11rWeJRLYvM/FBALwygH2eRAPWeRXy3l0ae2iihgeZkgXpz6IqVlIyv/bsV0AsTBW5jKVcKtA8BQNVMopQlRaBufJrjQEDWeGKNrNenE3/jiaUoRlYkJ00QMUta8xxNosBBFDgiHlSxUbuwDPWEgIpbM2dvMGvmIN7tz/cG7PbnSLY6UwDY26/+Dy3okeVLvqL0AAAAAElFTkSuQmCC")}.ageChip.r15{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABYUlEQVR4nGOUkJD4H6vDz+CqwMUgzMnMQAvw9vtfht0PvjEsvvKRgSVWh58hQpOXJhbBgDAnM9wOJlcFLppahgxcFbgYmGgVjNiAMCczAwtOSXMfBh4VIzj/3amtDD/fPmOQ9Ewl2oKHS5swxHBaKOmZysAmJAnnf7lzDu4QSixkwqZQ2NwHxTJqAqwWCpl508QyBgYcQcqraky0AVca/CmzkFfVmOHz7bNEW/rr3XPKLPx8+yzD59tnGYwmnSLKAHxxjc0xOFMpsUCnYSNOy25NysCwFGuioQbA5XOaWYgLkBykb09uwSlHTKFAkoWwBEWJhYM7SNmEJDEKb2zlJdUsZBeWwgg2mlqIDZBayNMs4+MCdE80gyeVPt8+C4X/691zhp9vnzE8XNrEwCYkQZTh2ApvxrO5Jv9JdCRFgOnt9790s+zt978MTLsffKObhbsffGNgWXzlIwMDAwPdmvoAYoRuQFDZ/XsAAAAASUVORK5CYII=")}.ageChip.r19{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABeUlEQVR4nM2WMUvDQBiG314DCRJo6VCSSP+BKFhE566CLi6ddVD/g5P/QTrUuWNpIHTrpouxm5tbIYEIpZUMyZDWxYamd7F3xIQ+U3J3uSffd5fvUtI0bdlWq2gpKmqkjDyYLiKMAh89fwaprVZxtVfJRbSiRsqxg7QUNVfZOi1FBckrjSxqpAwprbNxewPZ0OP7Sacbt/My6XQROm6ijSmUDR2Nu+TEX6YFAKhfnnMLv9/H8AZWoo2wBtYv+CcVhS0UiAIAQselUpcGlVLZ0BNrt43Xo7P4ujnsb32WirBycoy5PeYWikIJvYGFz4fH4oSirKeQZylSv0NeDp6fhMZnFopsMOAfUiqKUIRze4yP63vI++yoNsthZuFKCpvdx1NnhYSyoVNlzzMt7iojLARAFXXPtFJGstntTcOiOewLjS88wt1Iaei41Ekd/J55m+1/MX+jT53Sy+HpUvAlM0Gmi6gw2XQRgYwCvzDhKPAh9fwZABT2q/8D8vZu8/MH/c0AAAAASUVORK5CYII=")}.synopsisWrap{flex:1;min-height:0;overflow:hidden}.synopsis{margin:0;width:100%;font-size:17px;line-height:1.55;font-weight:500;letter-spacing:-.018em;color:#f2f2f2;white-space:pre-wrap;overflow:visible;word-break:keep-all;overflow-wrap:break-word}
+.info{position:absolute;right:54px;bottom:79px;width:315px;font-size:16px;line-height:1.5;letter-spacing:-.015em}.info p{margin:0 0 16px;color:#92969c}.info span{color:#72767c}.info strong{color:#f5f5f5;font-weight:500}
+.modalOverlay{position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;padding:24px}.modalOverlay.open{display:flex}.modal{width:min(820px,96vw);max-height:min(760px,90vh);background:#17191e;border:1px solid #333842;border-radius:16px;box-shadow:0 28px 80px rgba(0,0,0,.55);display:flex;flex-direction:column;overflow:hidden}.modal.narrow{width:min(640px,96vw)}.modalHead{display:flex;align-items:start;justify-content:space-between;gap:20px;padding:20px 22px 14px;border-bottom:1px solid #2a2e35}.modalHead h3{margin:0 0 5px;font-size:20px}.modalHead p{margin:0;color:#8f959d;font-size:11px;line-height:1.5}.modalClose{width:36px;height:36px;border-radius:50%;border:1px solid #3c424c;background:#22252b;color:#fff;font-size:24px;cursor:pointer}.modalTools{display:grid;grid-template-columns:1fr auto;gap:9px;padding:14px 22px;border-bottom:1px solid #2a2e35}.modalTools input{margin:0}.modalBody{padding:6px 22px 18px;overflow:auto}.keywordGroup{padding:15px 0 4px;border-bottom:1px solid #252932}.keywordGroup:last-child{border:0}.keywordGroup h4{font-size:12px;color:#aeb4bd;margin:0 0 10px}.keywordGrid{display:flex;flex-wrap:wrap;gap:7px}.keyword{border:1px solid #383e48;background:#101216;color:#cfd3da;border-radius:999px;padding:7px 10px;font-size:12px;cursor:pointer}.keyword:hover{border-color:#666e7a}.keyword.selected{background:#f0f0f0;color:#111;border-color:#fff;font-weight:700}.modalCustom{display:grid;grid-template-columns:1fr auto;gap:8px;padding:14px 22px;border-top:1px solid #2a2e35}.modalFoot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 22px;border-top:1px solid #2a2e35}.selectedCount{font-size:12px;color:#aeb4bd}.footBtns{display:flex;gap:8px}
+.styleGrid{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.switchLine{display:flex;align-items:center;gap:8px;font-size:12px;color:#c7ccd3;margin:0 0 12px}.previewBox{margin:4px 0 16px;padding:18px;border:1px solid #2f353f;border-radius:12px;background:#101216}.previewLogo{min-height:90px;display:flex;align-items:flex-end}.previewLogoText{white-space:pre-line;font-size:64px;line-height:1;font-weight:800;letter-spacing:-.045em;color:#fff}
+.card.square .logoHolder{left:54px}.card.square .actions{left:54px}.card.square .tagline{left:500px;max-width:350px}.card.square .meta{left:54px;width:500px}.card.square .info{right:38px;width:270px}.taglineTools{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}.taglineTools .wide{grid-column:1/-1}
+@media(max-width:1050px){.app{grid-template-columns:1fr}.panel{position:relative;max-height:none;border-right:0;border-bottom:1px solid var(--line)}.stageFrame{min-height:auto}}@media(max-width:620px){.panel{padding:14px}.grid2,.grid3,.styleGrid{grid-template-columns:1fr}.pickerRow{grid-template-columns:1fr}.ratingPicker{grid-template-columns:repeat(2,1fr)}.stageWrap{padding:8px}.stageFrame{padding:8px}.modalTools,.modalCustom{grid-template-columns:1fr}.modal{max-height:92vh}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="panel">
+    <div class="head"><div><div class="eyebrow">STREAMING CARD MAKER</div><h1>스트리밍 카드 메이커</h1></div><button class="btn" id="resetBtn" type="button">초기화</button></div>
+
+    <section class="group"><h2>이미지 / 로고</h2>
+      <div class="modeRow">
+        <button class="toggleBtn active" id="modeImageBtn" type="button">이미지 로고</button>
+        <button class="toggleBtn" id="modeTextBtn" type="button">텍스트 로고</button>
+      </div>
+      <div class="hint" style="margin-bottom:10px">배경은 화면 빈 곳을 드래그해서 이동, 로고는 로고 자체를 드래그해서 이동할 수 있어.</div>
+      <label class="upload">배경 이미지 업로드<input id="bgUpload" type="file" accept="image/*"></label>
+      <div class="imageOnly" id="imageControls">
+        <label class="upload">제목 로고 이미지 업로드<input id="logoUpload" type="file" accept="image/*"></label>
+        <button class="btn" id="removeLogoBtn" type="button">로고 제거</button>
+      </div>
+      <div class="textOnly hidden" id="textControls">
+        <label>로고 텍스트
+          <textarea id="logoTextInput" rows="3" placeholder="예: 제목 예시">제목 예시</textarea>
+        </label>
+        <div class="inlineStyle">
+          <h3>텍스트 로고 스타일</h3>
+          <div class="styleGrid">
+            <label>폰트
+              <select id="logoFont">
+                <optgroup label="Modern / Sans">
+                  <option value='"Helvetica Neue",Helvetica,Arial,"Noto Sans KR",sans-serif'>Helvetica Neue</option>
+                  <option value='Arial,"Noto Sans KR",sans-serif'>Arial</option>
+                  <option value='"Arial Black",Arial,"Noto Sans KR",sans-serif'>Arial Black</option>
+                  <option value='"Arial Narrow",Arial,"Noto Sans KR",sans-serif'>Arial Narrow</option>
+                  <option value='Montserrat,"Noto Sans KR",sans-serif'>Montserrat</option>
+                  <option value='Poppins,"Noto Sans KR",sans-serif'>Poppins</option>
+                  <option value='Raleway,"Noto Sans KR",sans-serif'>Raleway</option>
+                  <option value='"Roboto Condensed","Noto Sans KR",sans-serif'>Roboto Condensed</option>
+                  <option value='Oswald,"Noto Sans KR",sans-serif'>Oswald</option>
+                  <option value='"Trebuchet MS",Arial,"Noto Sans KR",sans-serif'>Trebuchet MS</option>
+                  <option value='Verdana,"Noto Sans KR",sans-serif'>Verdana</option>
+                  <option value='Tahoma,"Noto Sans KR",sans-serif'>Tahoma</option>
+                  <option value='"Century Gothic",Arial,"Noto Sans KR",sans-serif'>Century Gothic</option>
+                </optgroup>
+                <optgroup label="Bold / Poster">
+                  <option value='Anton,"Noto Sans KR",sans-serif'>Anton</option>
+                  <option value='"Archivo Black","Noto Sans KR",sans-serif'>Archivo Black</option>
+                  <option value='"Bebas Neue","Noto Sans KR",sans-serif'>Bebas Neue</option>
+                  <option value='Impact,"Arial Narrow Bold","Noto Sans KR",sans-serif'>Impact</option>
+                  <option value='Bungee,"Noto Sans KR",sans-serif'>Bungee</option>
+                  <option value='"Black Han Sans","Noto Sans KR",sans-serif'>Black Han Sans</option>
+                  <option value='"Do Hyeon","Noto Sans KR",sans-serif'>Do Hyeon</option>
+                  <option value='Gugi,"Noto Sans KR",sans-serif'>Gugi</option>
+                  <option value='Jua,"Noto Sans KR",sans-serif'>Jua</option>
+                </optgroup>
+                <optgroup label="Serif / Elegant">
+                  <option value='Georgia,"Noto Serif KR",serif'>Georgia</option>
+                  <option value='"Times New Roman",Times,"Noto Serif KR",serif'>Times New Roman</option>
+                  <option value='"Playfair Display","Noto Serif KR",serif'>Playfair Display</option>
+                  <option value='"DM Serif Display","Noto Serif KR",serif'>DM Serif Display</option>
+                  <option value='Cinzel,"Noto Serif KR",serif'>Cinzel</option>
+                  <option value='"Cormorant Garamond","Noto Serif KR",serif'>Cormorant Garamond</option>
+                  <option value='"Palatino Linotype",Palatino,"Book Antiqua","Noto Serif KR",serif'>Palatino</option>
+                  <option value='Garamond,"Noto Serif KR",serif'>Garamond</option>
+                  <option value='"Baskerville",Georgia,"Noto Serif KR",serif'>Baskerville</option>
+                  <option value='"Book Antiqua",Palatino,"Noto Serif KR",serif'>Book Antiqua</option>
+                </optgroup>
+                <optgroup label="Korean">
+                  <option value='"Noto Sans KR",sans-serif'>Noto Sans KR</option>
+                  <option value='"Noto Serif KR",serif'>Noto Serif KR</option>
+                  <option value='"Nanum Myeongjo","Noto Serif KR",serif'>Nanum Myeongjo</option>
+                  <option value='"Black Han Sans","Noto Sans KR",sans-serif'>검은고딕</option>
+                  <option value='"Do Hyeon","Noto Sans KR",sans-serif'>도현</option>
+                  <option value='Jua,"Noto Sans KR",sans-serif'>주아</option>
+                  <option value='Gugi,"Noto Sans KR",sans-serif'>구기</option>
+                  <option value='"Song Myung","Noto Serif KR",serif'>송명</option>
+                  <option value='"Apple SD Gothic Neo","Noto Sans KR",sans-serif'>Apple SD Gothic Neo</option>
+                  <option value='"Malgun Gothic","Noto Sans KR",sans-serif'>맑은 고딕</option>
+                </optgroup>
+                <optgroup label="Monospace / Tech">
+                  <option value='"Courier New",Courier,monospace'>Courier New</option>
+                  <option value='Consolas,"Courier New",monospace'>Consolas</option>
+                  <option value='Monaco,Consolas,monospace'>Monaco</option>
+                  <option value='"Lucida Console",Monaco,monospace'>Lucida Console</option>
+                </optgroup>
+              </select>
+            </label>
+            <label>굵기<input id="logoWeight" type="range" min="100" max="900" step="100" value="800"></label>
+            <label>행간<input id="logoLineHeight" type="range" min="70" max="180" value="100"></label>
+            <label>자간<input id="logoLetterSpacing" type="range" min="-12" max="30" value="-4"></label>
+            <label>회전<input id="logoRotate" type="range" min="-35" max="35" value="0"></label>
+            <label>아치형<input id="logoArch" type="range" min="-100" max="100" value="0"></label>
+            <label>가로 왜곡<input id="logoScaleX" type="range" min="60" max="160" value="100"></label>
+            <label>세로 왜곡<input id="logoScaleY" type="range" min="60" max="160" value="100"></label>
+            <label>글자색<input id="logoColor" type="color" value="#ffffff"></label>
+            <label>그라데이션 끝색<input id="logoGradientColor" type="color" value="#9fd7ff"></label>
+            <label>그라데이션 방향<input id="logoGradientAngle" type="range" min="0" max="360" value="90"></label>
+            <label>외곽선 색<input id="logoStrokeColor" type="color" value="#000000"></label>
+            <label>외곽선 두께<input id="logoStrokeWidth" type="range" min="0" max="8" value="0"></label>
+            <label>그림자 블러<input id="logoShadowBlur" type="range" min="0" max="40" value="14"></label>
+            <label>그림자 거리<input id="logoShadowDistance" type="range" min="0" max="40" value="8"></label>
+            <label>그림자 각도<input id="logoShadowAngle" type="range" min="0" max="360" value="45"></label>
+            <label>그림자 세기<input id="logoShadowStrength" type="range" min="0" max="100" value="45"></label>
+          </div>
+                    <label class="switchLine"><input id="logoGradientEnabled" type="checkbox"> 그라데이션 사용</label>
+          <label class="switchLine"><input id="logoShadowEnabled" type="checkbox" checked> 그림자 사용</label>
+          <button class="btn secondary" id="logoStyleReset" type="button">스타일 초기화</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="group grid2">
+      <label>배경 확대<input id="bgZoom" type="range" min="100" max="220" value="100"></label>
+      <label>어둡기<input id="overlay" type="range" min="0" max="85" value="45"></label>
+      <label>블러<input id="blur" type="range" min="0" max="12" value="0"></label>
+      <label>로고 크기<input id="logoScale" type="range" min="50" max="180" value="100"></label>
+    </section>
+
+    <section class="group"><h2>배경 크롭</h2>
+      <div class="row"><button class="btn cropModeBtn" id="cropModeBtn" type="button">정밀 크롭 모드</button><button class="btn" id="cropResetBtn" type="button">위치 초기화</button></div>
+      <div class="cropTools" style="margin-top:10px">
+        <label>가로 미세조정<input id="bgFineX" type="range" min="0" max="1000" value="500"></label>
+        <label>세로 미세조정<input id="bgFineY" type="range" min="0" max="1000" value="500"></label>
+      </div>
+      <p class="cropHint">정밀 크롭 모드에서는 3분할 가이드가 나타나. 드래그로 이동하고, 마우스 휠로 확대/축소, Shift+드래그는 더 천천히 움직여.</p>
+    </section>
+
+    <section class="group"><h2>기본 정보</h2>
+      <label>캐치프레이즈<textarea id="tagline" rows="4" placeholder="엔터를 치면 미리보기에도 그대로 줄바꿈돼.">한 번의 선택이 모든 것을 바꾼다.
+끝까지 보고 나면 처음부터 다시 보게 될 이야기.</textarea></label>
+      <div class="taglineTools">
+        <label>가로 위치<input id="tagX" type="range" min="0" max="1100" value="650"></label>
+        <label>세로 위치<input id="tagY" type="range" min="0" max="820" value="330"></label>
+        <label class="wide">영역 너비<input id="tagWidth" type="range" min="180" max="900" value="470"></label>
+        <label>글자 크기<input id="tagSize" type="range" min="14" max="42" value="24"></label>
+      </div>
+      <p class="subhint">캐치프레이즈 자체를 미리보기에서 드래그해서 옮길 수도 있어. 입력창에서 엔터한 줄바꿈은 그대로 반영돼.</p>
+      <div class="grid3">
+        <label>연도<input id="year" type="text" value="2026"></label>
+        <label>러닝타임<input id="runtime" type="text" value="2시간 08분"></label>
+        <label>화질<input id="quality" type="text" value="HD"></label>
+      </div>
+      <label>관람등급</label>
+      <div class="ratingPicker" id="ratingPicker">
+        <button class="ratingChoice" data-rating="ALL" type="button">ALL</button>
+        <button class="ratingChoice" data-rating="12" type="button">12</button>
+        <button class="ratingChoice active" data-rating="15" type="button">15</button>
+        <button class="ratingChoice" data-rating="19" type="button">19</button>
+      </div>
+      <label style="margin-top:12px">줄거리<textarea id="synopsis" rows="6">평범한 하루를 보내던 주인공은 우연한 사건을 계기로 익숙했던 세계의 이면을 마주한다. 예상치 못한 동료들과 함께 진실을 좇는 동안 과거의 선택과 숨겨진 비밀이 하나씩 드러나고, 마지막 순간 누구를 믿을지 결정해야 한다.</textarea></label>
+    </section>
+
+    <section class="group"><h2>오른쪽 정보</h2>
+      <label>감독<input id="director" type="text" value="감독 이름 예시"></label>
+      <label>출연<input id="cast" type="text" value="배우 A, 배우 B, 배우 C"></label>
+      <div class="pickerRow">
+        <label>장르<input id="genres" type="text" value="미국 작품, 드라마 영화, 미스터리 영화" readonly></label>
+        <button class="btn pickerBtn" id="pickGenres" type="button">선택</button>
+      </div>
+      <div class="pickerRow">
+        <label>작품 특징<input id="features" type="text" value="몰입감 강한, 반전 있는, 여운이 남는" readonly></label>
+        <button class="btn pickerBtn" id="pickFeatures" type="button">선택</button>
+      </div>
+    </section>
+
+    <section class="group"><h2>출력</h2>
+      <div class="grid2">
+        <label>비율
+          <select id="ratio">
+            <option value="1200x900" selected>4:3</option>
+            <option value="1600x900">16:9</option>
+            <option value="900x900">1:1 정사각형</option>
+          </select>
+        </label>
+        <label>파일명<input id="filename" type="text" value="streaming-card"></label>
+      </div>
+      <button class="btn primary" id="exportBtn" type="button">PNG로 저장</button>
+      
+    </section>
+  </aside>
+
+  <main class="stageWrap">
+    <div class="toolbar"><span>실시간 미리보기</span><span id="sizeLabel">1200 × 900</span></div>
+    <div class="stageFrame">
+      <article class="card" id="card" aria-label="streaming detail card preview">
+        <div class="bg" id="bg"></div>
+        <div class="shade" id="shade"></div>
+        <div class="vignette"></div>
+        <div class="cropGrid"><div class="cropCenter"></div></div>
+        <div class="close" aria-hidden="true"></div>
+
+        <div class="logoHolder" id="logoHolder">
+          <img class="logoImg hide" id="logoImg" alt="title logo">
+          <div class="logoText" id="logoText">제목 예시</div>
+        </div>
+
+        <div class="actions">
+          <button class="play" type="button"><span class="tri"></span><span>재생</span></button>
+          <button class="round plus" type="button" aria-label="추가">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 6v12"></path>
+              <path d="M6 12h12"></path>
+            </svg>
+          </button>
+          <button class="round thumb" type="button" aria-label="좋아요">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 10.2v8.3H5.2A1.7 1.7 0 0 1 3.5 16.8v-4.9a1.7 1.7 0 0 1 1.7-1.7H8Z"/>
+              <path d="M8 18.5h7.2c1.2 0 2.1-.7 2.5-1.8l1.4-4.6c.3-1.1-.5-2.1-1.6-2.1h-3.9l.5-2.6c.2-1-.4-1.9-1.3-2.2l-.5-.1-4.3 5.1"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="tagline" id="taglineOut">한 번의 선택이 모든 것을 바꾼다.
+끝까지 보고 나면 처음부터 다시 보게 될 이야기.</div>
+
+        <div class="meta">
+          <div class="metaTop">
+            <span id="yearOut">2026</span>
+            <span id="runtimeOut">2시간 08분</span>
+            <span class="quality" id="qualityOut">HD</span>
+          </div>
+          <div class="ageRow"><span class="ageChip r15" id="ageChip">15</span></div>
+          <div class="synopsisWrap" id="synopsisWrap">
+            <p class="synopsis" id="synopsisOut"></p>
+          </div>
+        </div>
+
+        <div class="info">
+          <p><span>감독:</span> <strong id="directorOut"></strong></p>
+          <p><span>출연:</span> <strong id="castOut"></strong></p>
+          <p><span>장르:</span> <strong id="genresOut"></strong></p>
+          <p><span>작품 특징:</span> <strong id="featuresOut"></strong></p>
+        </div>
+      </article>
+    </div>
+  </main>
+</div>
+
+<div class="modalOverlay" id="keywordOverlay" aria-hidden="true">
+  <div class="modal">
+    <div class="modalHead">
+      <div><h3 id="keywordTitle">키워드 선택</h3><p>클릭해서 여러 개 고른 뒤 적용해줘.</p></div>
+      <button class="modalClose" id="modalClose" type="button">×</button>
+    </div>
+    <div class="modalTools">
+      <input id="keywordSearch" type="text" placeholder="키워드 검색">
+      <button class="btn clearBtn" id="clearKeywords" type="button">초기화</button>
+    </div>
+    <div class="modalBody" id="keywordBody"></div>
+    <div class="modalCustom">
+      <input id="customKeyword" type="text" placeholder="목록에 없는 키워드 직접 추가">
+      <button class="btn" id="addCustomKeyword" type="button">추가</button>
+    </div>
+    <div class="modalFoot">
+      <div class="selectedCount" id="selectedCount">0개 선택</div>
+      <div class="footBtns">
+        <button class="btn" id="modalCancel" type="button">취소</button>
+        <button class="btn applyBtn" id="modalApply" type="button">적용</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" onerror="this.onerror=null;this.src='https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js'"></script>
+<script>
+(()=>{
+const $=id=>document.getElementById(id);
+const defaults={
+  logoMode:'image',
+  logoTextInput:'제목 예시',
+  logoStyle:{font:'"Helvetica Neue",Helvetica,Arial,"Apple SD Gothic Neo","Noto Sans KR",sans-serif',weight:800,lineHeight:1,letterSpacing:-4,color:'#ffffff',strokeColor:'#000000',strokeWidth:0,shadowEnabled:true,shadowBlur:14,shadowDistance:8,shadowAngle:45,shadowStrength:45,gradientEnabled:false,gradientColor:'#9fd7ff',gradientAngle:90,rotate:0,arch:0,scaleX:100,scaleY:100},
+  tagline:'한 번의 선택이 모든 것을 바꾼다.\n끝까지 보고 나면 처음부터 다시 보게 될 이야기.',
+  year:'2026',runtime:'2시간 08분',quality:'HD',ageRating:'15',
+  synopsis:'평범한 하루를 보내던 주인공은 우연한 사건을 계기로 익숙했던 세계의 이면을 마주한다. 예상치 못한 동료들과 함께 진실을 좇는 동안 과거의 선택과 숨겨진 비밀이 하나씩 드러나고, 마지막 순간 누구를 믿을지 결정해야 한다.',
+  director:'감독 이름 예시',cast:'배우 A, 배우 B, 배우 C',genres:'미국 작품, 드라마 영화, 미스터리 영화',features:'몰입감 강한, 반전 있는, 여운이 남는',filename:'streaming-card',ratio:'1200x900',
+  bgZoom:100,overlay:45,blur:0,logoScale:100,bgPosX:50,bgPosY:50,logoLeft:64,logoTop:390,tagX:650,tagY:330,tagWidth:470,tagSize:24,bgData:'',logoData:''
+};
+const st={ratio:'1200x900',bgPosX:50,bgPosY:50,bgData:'',logoData:'',logoMode:'image'};
+
+const GENRE_GROUPS={
+  '형식':['영화','시리즈','리미티드 시리즈','다큐멘터리','리얼리티 프로그램','애니','스탠드업 코미디'],
+  '국가 / 지역':['한국 작품','미국 작품','영국 작품','일본 작품','프랑스 작품','스페인 작품','유럽 작품','아시아 작품'],
+  '주요 장르':['드라마 영화','로맨스 영화','코미디 영화','스릴러 영화','미스터리 영화','범죄 영화','액션 영화','전쟁 영화','SF 영화','판타지 영화','공포 영화','청춘 영화','음악 영화','독립 영화'],
+  '세부 장르':['심리 스릴러','재난 영화','생존 스릴러','느와르','법정 드라마','시대극','로드 무비','버디 무비','정치 스릴러','첩보물','초자연 미스터리']
+};
+const FEATURE_GROUPS={
+  '분위기':['긴장감 넘치는','긴박감 넘치는','감정을 파고드는','어두운','불길한','서늘한','잔잔한','몽환적인','음산한','현실적인'],
+  '감정선':['설레는','로맨틱한','애절한','먹먹한','진심 어린','희망찬','힐링되는','비극적인','운명적인','여운이 남는'],
+  '전개 / 성격':['몰입감 강한','예측불가한','반전 있는','느린 전개의','서사 중심의','심리 게임','쫓고 쫓기는','거부할 수 없는 이끌림','금지된 사랑','그들만의 비밀'],
+  '소재':['초자연 현상','시간 여행','생존기','복수극','가족 간의 이야기','우정 이야기','실화 바탕','청춘극','SF 미스터리','평단의 찬사를 받은']
+};
+
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function syncText(id,out=id+'Out'){const el=$(id),o=$(out); if(!el||!o) return; o.textContent=el.value;}
+['year','runtime','quality','director','cast','genres','features'].forEach(id=>{$(id).addEventListener('input',()=>syncText(id)); syncText(id);});
+$('synopsis').addEventListener('input',()=>{$('synopsisOut').textContent=$('synopsis').value; fitSynopsis();}); $('synopsisOut').textContent=$('synopsis').value;
+$('tagline').addEventListener('input',()=>{$('taglineOut').textContent=$('tagline').value;}); $('taglineOut').textContent=$('tagline').value;
+function syncTagControls(){ const t=$('taglineOut'); t.style.left=$('tagX').value+'px'; t.style.top=$('tagY').value+'px'; t.style.width=$('tagWidth').value+'px'; t.style.fontSize=$('tagSize').value+'px'; }
+['tagX','tagY','tagWidth','tagSize'].forEach(id=>$(id).addEventListener('input',syncTagControls)); syncTagControls();
+function renderLogoText(){ const text=$('logoTextInput').value||' '; const arch=+$('logoArch')?.value||0; const el=$('logoText'); if(Math.abs(arch)<1){ el.textContent=text; return; } el.innerHTML=''; const lines=text.split('\n'); lines.forEach((line,li)=>{ const row=document.createElement('div'); row.style.whiteSpace='nowrap'; row.style.display='block'; const chars=[...line]; const mid=(chars.length-1)/2||1; chars.forEach((ch,i)=>{ const sp=document.createElement('span'); sp.textContent=ch===' '?'\u00a0':ch; sp.style.display='inline-block'; const norm=(i-mid)/Math.max(1,mid); const lift=-arch*(1-norm*norm)*0.32; const rot=arch*norm*0.11; sp.style.transform=`translateY(${lift}px) rotate(${rot}deg)`; sp.style.transformOrigin='50% 100%'; row.appendChild(sp); }); el.appendChild(row); }); }
+$('logoTextInput').addEventListener('input',()=>{renderLogoText();});
+renderLogoText();
+
+function setLogoMode(mode){
+  st.logoMode=mode;
+  $('modeImageBtn').classList.toggle('active',mode==='image');
+  $('modeTextBtn').classList.toggle('active',mode==='text');
+  $('imageControls').classList.toggle('hidden',mode!=='image');
+  $('textControls').classList.toggle('hidden',mode!=='text');
+  $('logoImg').classList.toggle('hide',!(mode==='image' && st.logoData));
+  $('logoText').classList.toggle('hide',mode!=='text');
+  if(mode==='image' && !st.logoData){$('logoText').classList.add('hide');}
+}
+$('modeImageBtn').onclick=()=>setLogoMode('image'); $('modeTextBtn').onclick=()=>setLogoMode('text');
+
+function setLogoScale(v){document.documentElement.style.setProperty('--logo-scale', v/100);} 
+$('logoScale').addEventListener('input',()=>setLogoScale(+$('logoScale').value)); setLogoScale(+$('logoScale').value);
+$('bgZoom').addEventListener('input',bgStyle); $('blur').addEventListener('input',bgStyle); $('overlay').addEventListener('input',()=>{$('shade').style.background=`rgba(0,0,0,${+$('overlay').value/100})`;});
+$('shade').style.background=`rgba(0,0,0,${+$('overlay').value/100})`;
+
+async function prepareImageFile(file,{maxSide=4096,preserveAlpha=false}={}){
+  if(!file || !file.type?.startsWith('image/')) throw new Error('이미지 파일만 업로드할 수 있어.');
+  if(file.size > 40*1024*1024) throw new Error('이미지 용량이 너무 커. 40MB 이하 이미지를 사용해줘.');
+
+  const raw = await new Promise((resolve,reject)=>{
+    const r=new FileReader();
+    r.onload=()=>resolve(r.result);
+    r.onerror=()=>reject(new Error('이미지를 읽지 못했어.'));
+    r.readAsDataURL(file);
+  });
+
+  const img = await new Promise((resolve,reject)=>{
+    const im=new Image();
+    im.onload=()=>resolve(im);
+    im.onerror=()=>reject(new Error('이미지를 불러오지 못했어.'));
+    im.src=raw;
+  });
+
+  const longest=Math.max(img.naturalWidth||img.width,img.naturalHeight||img.height);
+  if(longest<=maxSide) return raw;
+
+  const scale=maxSide/longest;
+  const w=Math.max(1,Math.round((img.naturalWidth||img.width)*scale));
+  const h=Math.max(1,Math.round((img.naturalHeight||img.height)*scale));
+  const canvas=document.createElement('canvas');
+  canvas.width=w; canvas.height=h;
+  const ctx=canvas.getContext('2d');
+  ctx.imageSmoothingEnabled=true;
+  ctx.imageSmoothingQuality='high';
+  ctx.drawImage(img,0,0,w,h);
+
+  return preserveAlpha
+    ? canvas.toDataURL('image/png')
+    : canvas.toDataURL('image/webp',0.94);
+}
+
+function handleFile(input,options,cb){
+  input.addEventListener('change',async e=>{
+    const f=e.target.files?.[0];
+    if(!f) return;
+    try{
+      const data=await prepareImageFile(f,options);
+      cb(data);
+    }catch(err){
+      console.error(err);
+      alert(err.message||'이미지 업로드 중 오류가 났어.');
+      input.value='';
+    }
+  });
+}
+handleFile($('bgUpload'),{maxSide:4096,preserveAlpha:false},data=>{
+  st.bgData=data;
+  $('bg').style.backgroundImage=`url("${data}")`;
+});
+handleFile($('logoUpload'),{maxSide:2400,preserveAlpha:true},data=>{
+  st.logoData=data;
+  $('logoImg').src=data;
+  if(st.logoMode==='image'){
+    $('logoImg').classList.remove('hide');
+    $('logoText').classList.add('hide');
+  }
+});
+$('removeLogoBtn').onclick=()=>{st.logoData=''; $('logoUpload').value=''; $('logoImg').src=''; $('logoImg').classList.add('hide'); if(st.logoMode==='text') $('logoText').classList.remove('hide');};
+
+function bgStyle(){ $('bg').style.backgroundPosition=`${st.bgPosX}% ${st.bgPosY}%`; $('bg').style.transform=`scale(${$('bgZoom').value/100})`; $('bg').style.filter=`blur(${$('blur').value}px)`; }
+bgStyle();
+let cropMode=false;
+function syncFineFromState(){ $('bgFineX').value=Math.round(st.bgPosX*10); $('bgFineY').value=Math.round(st.bgPosY*10); }
+function syncStateFromFine(){ st.bgPosX=+$('bgFineX').value/10; st.bgPosY=+$('bgFineY').value/10; bgStyle(); }
+$('bgFineX').addEventListener('input',syncStateFromFine); $('bgFineY').addEventListener('input',syncStateFromFine);
+$('cropModeBtn').onclick=()=>{ cropMode=!cropMode; $('cropModeBtn').classList.toggle('active',cropMode); $('card').classList.toggle('crop-mode',cropMode); };
+$('cropResetBtn').onclick=()=>{ st.bgPosX=50; st.bgPosY=50; $('bgZoom').value=100; syncFineFromState(); bgStyle(); };
+$('card').addEventListener('wheel',e=>{ if(!cropMode||!st.bgData) return; e.preventDefault(); const next=Math.max(100,Math.min(220,+$('bgZoom').value+(e.deltaY<0?2:-2))); $('bgZoom').value=next; bgStyle(); },{passive:false});
+
+function setRating(v){
+  document.querySelectorAll('.ratingChoice').forEach(b=>b.classList.toggle('active',b.dataset.rating===v));
+  const chip=$('ageChip'); chip.textContent=v; chip.setAttribute('aria-label',v+'세 관람등급'); chip.className='ageChip';
+  chip.classList.add(v==='ALL'?'all':v==='12'?'r12':v==='15'?'r15':'r19');
+  st.ageRating=v;
+}
+document.querySelectorAll('.ratingChoice').forEach(b=>b.addEventListener('click',()=>setRating(b.dataset.rating))); setRating('15');
+
+function fitSynopsis(){
+  const el=$('synopsisOut'), wrap=$('synopsisWrap');
+  let size=17, lh=1.55;
+  el.style.fontSize=size+'px'; el.style.lineHeight=lh;
+  let guard=0;
+  while(el.scrollHeight > wrap.clientHeight && size > 12 && guard < 20){ size -= .5; lh = Math.max(1.38, lh - .02); el.style.fontSize=size+'px'; el.style.lineHeight=lh; guard++; }
+}
+
+function cardScale(){ const tr=getComputedStyle($('card')).transform; if(!tr||tr==='none') return 1; try{return new DOMMatrixReadOnly(tr).a||1}catch(_){return 1} }
+function makeFreeDraggable(el){
+  let startX=0,startY=0,startLeft=0,startTop=0,dragging=false;
+  el.addEventListener('pointerdown',e=>{
+    if(e.target.closest('button')) return;
+    dragging=true; startX=e.clientX; startY=e.clientY;
+    startLeft=parseFloat(getComputedStyle(el).left)||0; startTop=parseFloat(getComputedStyle(el).top)||0;
+    el.classList.add('dragging'); el.setPointerCapture?.(e.pointerId); e.preventDefault(); e.stopPropagation();
+  });
+  el.addEventListener('pointermove',e=>{
+    if(!dragging) return; const sc=cardScale(); const card=$('card');
+    const rect=el.getBoundingClientRect(); const w=rect.width/sc, h=rect.height/sc;
+    let x=startLeft+(e.clientX-startX)/sc, y=startTop+(e.clientY-startY)/sc;
+    x=Math.max(-w*.9, Math.min(card.clientWidth-w*.08, x)); y=Math.max(-h*.85, Math.min(card.clientHeight-h*.08, y));
+    el.style.left=Math.round(x)+'px'; el.style.top=Math.round(y)+'px';
+  });
+  const stop=e=>{ if(!dragging) return; dragging=false; el.classList.remove('dragging'); try{el.releasePointerCapture?.(e.pointerId)}catch(_){}};
+  el.addEventListener('pointerup',stop); el.addEventListener('pointercancel',stop);
+}
+makeFreeDraggable($('logoHolder'));
+makeFreeDraggable($('taglineOut'));
+$('taglineOut').addEventListener('pointerup',()=>{ $('tagX').value=Math.round(parseFloat(getComputedStyle($('taglineOut')).left)||0); $('tagY').value=Math.round(parseFloat(getComputedStyle($('taglineOut')).top)||0); });
+let bgDrag=null;
+$('card').addEventListener('pointerdown',e=>{
+  if(!st.bgData) return; if(e.target.closest('.logoHolder,.actions,.tagline,.meta,.info,.close,button')) return;
+  bgDrag={x:e.clientX,y:e.clientY,posX:st.bgPosX,posY:st.bgPosY}; $('card').classList.add('bg-dragging'); $('card').setPointerCapture?.(e.pointerId); e.preventDefault();
+});
+$('card').addEventListener('pointermove',e=>{
+  if(!bgDrag) return; const sc=cardScale(); const dx=(e.clientX-bgDrag.x)/sc, dy=(e.clientY-bgDrag.y)/sc; const zoom=Math.max(1,+$('bgZoom').value/100); let sensitivity=100/Math.max(350,$('card').clientWidth*(zoom-.55)); if(cropMode) sensitivity*=.55; if(e.shiftKey) sensitivity*=.25;
+  st.bgPosX=Math.max(0,Math.min(100,bgDrag.posX-dx*sensitivity)); st.bgPosY=Math.max(0,Math.min(100,bgDrag.posY-dy*sensitivity)); syncFineFromState(); bgStyle();
+});
+function stopBgDrag(e){ if(!bgDrag) return; bgDrag=null; $('card').classList.remove('bg-dragging'); try{$('card').releasePointerCapture?.(e.pointerId)}catch(_){} }
+$('card').addEventListener('pointerup',stopBgDrag); $('card').addEventListener('pointercancel',stopBgDrag);
+
+function ratio(v){ st.ratio=v; const [w,h]=v.split('x').map(Number); $('card').style.width=w+'px'; $('card').style.height=h+'px'; $('card').classList.toggle('square',v==='900x900'); $('sizeLabel').textContent=`${w} × ${h}`; fit(); requestAnimationFrame(fitSynopsis); }
+$('ratio').addEventListener('change',()=>ratio($('ratio').value));
+function fit(){ const frame=document.querySelector('.stageFrame'), card=$('card'), [w,h]=st.ratio.split('x').map(Number); const sc=Math.min(Math.max(250,frame.clientWidth-40)/w, Math.max(250,window.innerHeight-110)/h, 1); card.style.transform=`scale(${sc})`; card.style.margin=`${-(h*(1-sc))/2}px ${-(w*(1-sc))/2}px`; }
+window.addEventListener('resize',fit);
+
+let modalMode='genres', tempSelection=new Set();
+function currentGroups(){ return modalMode==='genres'?GENRE_GROUPS:FEATURE_GROUPS; }
+function sourceInput(){ return modalMode==='genres'?$('genres'):$('features'); }
+function openKeywordModal(mode){ modalMode=mode; tempSelection=new Set(sourceInput().value.split(',').map(v=>v.trim()).filter(Boolean)); $('keywordTitle').textContent=mode==='genres'?'장르 선택':'작품 특징 선택'; $('keywordSearch').value=''; $('customKeyword').value=''; renderKeywords(); $('keywordOverlay').classList.add('open'); $('keywordOverlay').setAttribute('aria-hidden','false'); setTimeout(()=>$('keywordSearch').focus(),30); }
+function closeKeywordModal(){ $('keywordOverlay').classList.remove('open'); $('keywordOverlay').setAttribute('aria-hidden','true'); }
+function renderKeywords(){ const body=$('keywordBody'), q=$('keywordSearch').value.trim().toLowerCase(), groups=currentGroups(); body.innerHTML=''; Object.entries(groups).forEach(([group,items])=>{ const filtered=items.filter(x=>!q||x.toLowerCase().includes(q)); if(!filtered.length) return; const wrap=document.createElement('section'); wrap.className='keywordGroup'; const h=document.createElement('h4'); h.textContent=group; wrap.appendChild(h); const grid=document.createElement('div'); grid.className='keywordGrid'; filtered.forEach(word=>{ const b=document.createElement('button'); b.type='button'; b.className='keyword'+(tempSelection.has(word)?' selected':''); b.textContent=word; b.addEventListener('click',()=>{ tempSelection.has(word)?tempSelection.delete(word):tempSelection.add(word); renderKeywords(); }); grid.appendChild(b); }); wrap.appendChild(grid); body.appendChild(wrap); }); $('selectedCount').textContent=tempSelection.size+'개 선택'; }
+$('pickGenres').onclick=()=>openKeywordModal('genres'); $('pickFeatures').onclick=()=>openKeywordModal('features'); $('modalClose').onclick=closeKeywordModal; $('modalCancel').onclick=closeKeywordModal; $('keywordOverlay').addEventListener('click',e=>{ if(e.target===$('keywordOverlay')) closeKeywordModal(); }); $('keywordSearch').addEventListener('input',renderKeywords); $('clearKeywords').onclick=()=>{ tempSelection.clear(); renderKeywords();};
+$('addCustomKeyword').onclick=()=>{ const v=$('customKeyword').value.trim(); if(!v) return; tempSelection.add(v); $('customKeyword').value=''; renderKeywords();}; $('customKeyword').addEventListener('keydown',e=>{ if(e.key==='Enter'){ e.preventDefault(); $('addCustomKeyword').click(); }});
+$('modalApply').onclick=()=>{ sourceInput().value=[...tempSelection].join(', '); sourceInput().dispatchEvent(new Event('input')); closeKeywordModal(); };
+
+const logoStyleDefaults={...defaults.logoStyle};
+function applyLogoTextStyle(){
+  const font=$('logoFont').value, weight=$('logoWeight').value, lh=(+$('logoLineHeight').value/100), ls=(+$('logoLetterSpacing').value), color=$('logoColor').value, strokeColor=$('logoStrokeColor').value, strokeWidth=+$('logoStrokeWidth').value, shadowOn=$('logoShadowEnabled').checked, blur=+$('logoShadowBlur').value, dist=+$('logoShadowDistance').value, angle=+$('logoShadowAngle').value, strength=+$('logoShadowStrength').value;
+  const gradientOn=$('logoGradientEnabled').checked, gradientColor=$('logoGradientColor').value, gradientAngle=+$('logoGradientAngle').value, rotate=+$('logoRotate').value, arch=+$('logoArch').value, sx=+$('logoScaleX').value/100, sy=+$('logoScaleY').value/100;
+  const rad=(angle-90)*Math.PI/180, x=Math.round(Math.cos(rad)*dist*10)/10, y=Math.round(Math.sin(rad)*dist*10)/10, alpha=Math.max(0,Math.min(1,strength/100)), shadow=shadowOn?`${x}px ${y}px ${blur}px rgba(0,0,0,${alpha})`:'none';
+  const el=$('logoText');
+  el.style.fontFamily=font; el.style.fontWeight=weight; el.style.lineHeight=lh; el.style.letterSpacing=ls+'px'; el.style.fontStyle='normal'; el.style.textShadow=shadow; el.style.webkitTextStroke=`${strokeWidth}px ${strokeColor}`;
+  if(gradientOn){el.style.background=`linear-gradient(${gradientAngle}deg, ${color}, ${gradientColor})`;el.style.webkitBackgroundClip='text';el.style.backgroundClip='text';el.style.webkitTextFillColor='transparent';el.style.color='transparent';}else{el.style.background='none';el.style.webkitBackgroundClip='initial';el.style.backgroundClip='initial';el.style.webkitTextFillColor='';el.style.color=color;}
+  el.style.transform=`scale(var(--logo-scale)) rotate(${rotate}deg) scaleX(${sx}) scaleY(${sy})`;
+  el.style.transformOrigin='left bottom';
+  renderLogoText();
+}
+['logoFont','logoWeight','logoLineHeight','logoLetterSpacing','logoColor','logoGradientColor','logoGradientAngle','logoStrokeColor','logoStrokeWidth','logoShadowBlur','logoShadowDistance','logoShadowAngle','logoShadowStrength','logoRotate','logoArch','logoScaleX','logoScaleY'].forEach(id=>$(id).addEventListener('input',applyLogoTextStyle));
+['logoGradientEnabled','logoShadowEnabled'].forEach(id=>$(id).addEventListener('change',applyLogoTextStyle));
+$('logoStyleReset').onclick=()=>{ $('logoFont').value=logoStyleDefaults.font; $('logoWeight').value=logoStyleDefaults.weight; $('logoLineHeight').value=logoStyleDefaults.lineHeight*100; $('logoLetterSpacing').value=logoStyleDefaults.letterSpacing; $('logoColor').value=logoStyleDefaults.color; $('logoGradientColor').value=logoStyleDefaults.gradientColor; $('logoGradientAngle').value=logoStyleDefaults.gradientAngle; $('logoStrokeColor').value=logoStyleDefaults.strokeColor; $('logoStrokeWidth').value=logoStyleDefaults.strokeWidth; $('logoGradientEnabled').checked=logoStyleDefaults.gradientEnabled; $('logoShadowEnabled').checked=logoStyleDefaults.shadowEnabled; $('logoShadowBlur').value=logoStyleDefaults.shadowBlur; $('logoShadowDistance').value=logoStyleDefaults.shadowDistance; $('logoShadowAngle').value=logoStyleDefaults.shadowAngle; $('logoShadowStrength').value=logoStyleDefaults.shadowStrength; $('logoRotate').value=logoStyleDefaults.rotate; $('logoArch').value=logoStyleDefaults.arch; $('logoScaleX').value=logoStyleDefaults.scaleX; $('logoScaleY').value=logoStyleDefaults.scaleY; applyLogoTextStyle(); };
+applyLogoTextStyle();
+
+$('resetBtn').onclick=()=>{
+  $('tagline').value=defaults.tagline; $('tagX').value=defaults.tagX; $('tagY').value=defaults.tagY; $('tagWidth').value=defaults.tagWidth; $('tagSize').value=defaults.tagSize; $('year').value=defaults.year; $('runtime').value=defaults.runtime; $('quality').value=defaults.quality; $('synopsis').value=defaults.synopsis; $('director').value=defaults.director; $('cast').value=defaults.cast; $('genres').value=defaults.genres; $('features').value=defaults.features; $('filename').value=defaults.filename; $('ratio').value=defaults.ratio; $('logoTextInput').value=defaults.logoTextInput;
+  $('bgZoom').value=defaults.bgZoom; $('overlay').value=defaults.overlay; $('blur').value=defaults.blur; $('logoScale').value=defaults.logoScale;
+  st.bgPosX=defaults.bgPosX; st.bgPosY=defaults.bgPosY; st.bgData=''; st.logoData=''; $('bgUpload').value=''; $('logoUpload').value=''; $('bg').style.backgroundImage='linear-gradient(135deg,#151515,#454545)'; $('logoImg').src=''; $('logoImg').classList.add('hide'); $('logoHolder').style.left=defaults.logoLeft+'px'; $('logoHolder').style.top=defaults.logoTop+'px';
+  setLogoMode('image'); setLogoScale(defaults.logoScale); $('shade').style.background=`rgba(0,0,0,${defaults.overlay/100})`; setRating(defaults.ageRating); ['year','runtime','quality','director','cast','genres','features'].forEach(id=>syncText(id)); $('taglineOut').textContent=$('tagline').value; syncTagControls(); $('synopsisOut').textContent=$('synopsis').value; renderLogoText(); syncFineFromState(); bgStyle(); ratio(defaults.ratio); $('logoStyleReset').click(); requestAnimationFrame(fitSynopsis);
+};
+
+$('exportBtn').onclick=async()=>{
+  if(document.fonts?.ready){
+    await Promise.race([
+      document.fonts.ready,
+      new Promise(resolve=>setTimeout(resolve,3000))
+    ]);
+  }
+  if(!window.html2canvas) return alert('PNG 저장 기능을 불러오지 못했어. 인터넷 연결을 확인하고 새로고침해줘.');
+
+  const b=$('exportBtn'), old=b.textContent, card=$('card'), tr=card.style.transform, mg=card.style.margin;
+  b.disabled=true;
+  b.textContent='이미지 만드는 중…';
+  card.style.transform='none';
+  card.style.margin='0';
+
+  try{
+    const c=await html2canvas(card,{
+      backgroundColor:'#181818',
+      scale:1,
+      useCORS:true,
+      logging:false,
+      imageTimeout:12000
+    });
+
+    const blob=await new Promise(resolve=>c.toBlob(resolve,'image/png'));
+    if(!blob) throw new Error('PNG 생성 실패');
+
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.download=(($('filename').value||'streaming-card').replace(/[\\/:*?"<>|]+/g,'_'))+'.png';
+    a.href=url;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1500);
+  }catch(e){
+    console.error(e);
+    alert('PNG 저장 중 오류가 났어. 이미지가 너무 크다면 조금 작은 파일로 다시 시도해줘.');
+  }finally{
+    card.style.transform=tr;
+    card.style.margin=mg;
+    b.disabled=false;
+    b.textContent=old;
+  }
+};
+
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&$('keywordOverlay').classList.contains('open')) closeKeywordModal(); });
+
+setLogoMode('image'); syncFineFromState(); ratio('1200x900'); requestAnimationFrame(()=>{ fit(); fitSynopsis(); });
+})();
+</script>
+</body>
+</html>
