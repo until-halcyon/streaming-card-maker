@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark">
 <title>Streaming Card Maker</title>
-<!-- Public GitHub Pages build: v37 -->
+<!-- Public GitHub Pages build: v38 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Bebas+Neue&family=Black+Han+Sans&family=Bungee&family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Serif+Display&family=Do+Hyeon&family=Gugi&family=Jua&family=Montserrat:wght@300;400;500;600;700;800;900&family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Noto+Serif+KR:wght@400;500;600;700;800;900&family=Oswald:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Raleway:wght@300;400;500;600;700;800;900&family=Roboto+Condensed:wght@300;400;500;600;700;800;900&family=Song+Myung&display=swap" rel="stylesheet">
@@ -135,7 +135,7 @@ button{user-select:none}.app{display:grid;grid-template-columns:400px 1fr;min-he
     </section>
 
     <section class="group grid2">
-      <label>배경 크기<input id="bgZoom" type="range" min="60" max="220" value="100"></label>
+      <label>배경 확대<input id="bgZoom" type="range" min="100" max="220" value="100"></label>
       <label>어둡기<input id="overlay" type="range" min="0" max="85" value="45"></label>
       <label>블러<input id="blur" type="range" min="0" max="12" value="0"></label>
       <label>로고 크기<input id="logoScale" type="range" min="50" max="180" value="100"></label>
@@ -147,7 +147,7 @@ button{user-select:none}.app{display:grid;grid-template-columns:400px 1fr;min-he
         <label>가로 미세조정<input id="bgFineX" type="range" min="-500" max="1500" value="500"></label>
         <label>세로 미세조정<input id="bgFineY" type="range" min="-500" max="1500" value="500"></label>
       </div>
-      <p class="cropHint">배경은 카드 위에서 직접 드래그해서 움직일 수 있고, 마우스 휠이나 배경 크기 슬라이더로 확대/축소할 수 있어. Shift+드래그는 더 천천히 움직여.</p>
+      <p class="cropHint">배경은 카드 위에서 직접 드래그해서 좌우·위아래로 자유롭게 움직일 수 있어. 마우스 휠이나 배경 확대 슬라이더로 확대할 수 있고, Shift+드래그는 더 천천히 움직여.</p>
     </section>
 
     <section class="group"><h2>기본 정보</h2>
@@ -366,9 +366,8 @@ $('bgZoom').addEventListener('input',bgStyle); $('blur').addEventListener('input
 function updateOverlay(){
   const v=+$('overlay').value||0;
   const shadeAlpha=Math.max(0,Math.min(0.85,v/100));
-  const vignetteAlpha=Math.max(0,Math.min(1,v/42));
   $('shade').style.background=`rgba(0,0,0,${shadeAlpha})`;
-  $('vignette').style.opacity=String(vignetteAlpha);
+  $('vignette').style.opacity='1';
 }
 $('overlay').addEventListener('input',updateOverlay);
 updateOverlay();
@@ -437,13 +436,21 @@ handleFile($('logoUpload'),{maxSide:2400,preserveAlpha:true},data=>{
 });
 $('removeLogoBtn').onclick=()=>{st.logoData=''; $('logoUpload').value=''; $('logoImg').src=''; $('logoImg').classList.add('hide'); if(st.logoMode==='text') $('logoText').classList.remove('hide');};
 
-function bgStyle(){ $('bg').style.backgroundPosition=`${st.bgPosX}% ${st.bgPosY}%`; $('bg').style.transform=`scale(${$('bgZoom').value/100})`; $('bg').style.filter=`blur(${$('blur').value}px)`; }
+function bgStyle(){
+  const card=$('card');
+  const tx=((st.bgPosX-50)/100)*card.clientWidth*.52;
+  const ty=((st.bgPosY-50)/100)*card.clientHeight*.52;
+  $('bg').style.backgroundPosition='50% 50%';
+  $('bg').style.transform=`translate3d(${tx}px,${ty}px,0) scale(${$('bgZoom').value/100})`;
+  $('bg').style.transformOrigin='center center';
+  $('bg').style.filter=`blur(${$('blur').value}px)`;
+}
 bgStyle();
 function syncFineFromState(){ $('bgFineX').value=Math.round(st.bgPosX*10); $('bgFineY').value=Math.round(st.bgPosY*10); }
 function syncStateFromFine(){ st.bgPosX=+$('bgFineX').value/10; st.bgPosY=+$('bgFineY').value/10; bgStyle(); }
 $('bgFineX').addEventListener('input',syncStateFromFine); $('bgFineY').addEventListener('input',syncStateFromFine);
 $('cropResetBtn').onclick=()=>{ st.bgPosX=50; st.bgPosY=50; $('bgZoom').value=100; syncFineFromState(); bgStyle(); };
-$('card').addEventListener('wheel',e=>{ if(!st.bgData) return; e.preventDefault(); const next=Math.max(60,Math.min(220,+$('bgZoom').value+(e.deltaY<0?2:-2))); $('bgZoom').value=next; bgStyle(); },{passive:false});
+$('card').addEventListener('wheel',e=>{ if(!st.bgData) return; e.preventDefault(); const next=Math.max(100,Math.min(220,+$('bgZoom').value+(e.deltaY<0?2:-2))); $('bgZoom').value=next; bgStyle(); },{passive:false});
 
 function setRating(v){
   document.querySelectorAll('.ratingChoice').forEach(b=>b.classList.toggle('active',b.dataset.rating===v));
@@ -502,8 +509,18 @@ $('card').addEventListener('pointerdown',e=>{
   bgDrag={x:e.clientX,y:e.clientY,posX:st.bgPosX,posY:st.bgPosY}; $('card').classList.add('bg-dragging'); $('card').setPointerCapture?.(e.pointerId); e.preventDefault();
 });
 $('card').addEventListener('pointermove',e=>{
-  if(!bgDrag) return; const sc=cardScale(); const dx=(e.clientX-bgDrag.x)/sc, dy=(e.clientY-bgDrag.y)/sc; const zoom=Math.max(.6,+$('bgZoom').value/100); let sensitivity=100/Math.max(350,$('card').clientWidth*Math.max(.45,zoom-.25)); if(e.shiftKey) sensitivity*=.25;
-  st.bgPosX=Math.max(-50,Math.min(150,bgDrag.posX-dx*sensitivity)); st.bgPosY=Math.max(-50,Math.min(150,bgDrag.posY-dy*sensitivity)); syncFineFromState(); bgStyle();
+  if(!bgDrag) return;
+  const sc=cardScale();
+  const dx=(e.clientX-bgDrag.x)/sc, dy=(e.clientY-bgDrag.y)/sc;
+  const card=$('card');
+  const zoom=Math.max(1,+$('bgZoom').value/100);
+  let sensitivityX=100/Math.max(320,card.clientWidth*Math.max(.55,zoom-.18));
+  let sensitivityY=100/Math.max(260,card.clientHeight*Math.max(.55,zoom-.18));
+  if(e.shiftKey){ sensitivityX*=.25; sensitivityY*=.25; }
+  st.bgPosX=Math.max(-50,Math.min(150,bgDrag.posX-dx*sensitivityX));
+  st.bgPosY=Math.max(-50,Math.min(150,bgDrag.posY-dy*sensitivityY));
+  syncFineFromState();
+  bgStyle();
 });
 function stopBgDrag(e){ if(!bgDrag) return; bgDrag=null; $('card').classList.remove('bg-dragging'); try{$('card').releasePointerCapture?.(e.pointerId)}catch(_){} }
 $('card').addEventListener('pointerup',stopBgDrag); $('card').addEventListener('pointercancel',stopBgDrag);
