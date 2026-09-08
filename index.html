@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark">
 <title>Streaming Card Maker</title>
-<!-- Public GitHub Pages build: v57 -->
+<!-- Public GitHub Pages build: v47 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Bebas+Neue&family=Black+Han+Sans&family=Bungee&family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Serif+Display&family=Do+Hyeon&family=Gugi&family=Jua&family=Montserrat:wght@300;400;500;600;700;800;900&family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Noto+Serif+KR:wght@400;500;600;700;800;900&family=Oswald:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Raleway:wght@300;400;500;600;700;800;900&family=Roboto+Condensed:wght@300;400;500;600;700;800;900&family=Song+Myung&display=swap" rel="stylesheet">
@@ -19,17 +19,23 @@ button{user-select:none}.app{display:grid;grid-template-columns:400px 1fr;min-he
 .card{position:relative;width:1200px;height:900px;flex:none;overflow:hidden;background:#fff;transform-origin:center;cursor:grab;touch-action:none}.card.bg-dragging{cursor:grabbing}.bg{position:absolute;inset:-20%;background:none;background-size:cover;background-position:50% 50%;will-change:transform,filter;background-repeat:no-repeat;pointer-events:none}.shade{position:absolute;inset:0;background:rgba(0,0,0,0);pointer-events:none}.sideFade{position:absolute;inset:0;pointer-events:none;opacity:0;background:linear-gradient(90deg,rgba(0,0,0,.68),rgba(0,0,0,.10) 52%,rgba(0,0,0,.14))}.vignette{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 0 56%,rgba(20,20,20,.08) 61%,rgba(24,24,24,.28) 65%,rgba(24,24,24,.62) 70%,#181818 76%,#181818 100%)}.close{position:absolute;right:24px;top:18px;width:42px;height:42px;border-radius:50%;border:2px solid rgba(255,255,255,.25);background:rgba(0,0,0,.25);z-index:7}.close::before,.close::after{content:"";position:absolute;left:50%;top:50%;width:24px;height:2.5px;background:#fff;border-radius:2px;transform-origin:center}.close::before{transform:translate(-50%,-50%) rotate(45deg)}.close::after{transform:translate(-50%,-50%) rotate(-45deg)}
 .logoHolder{position:absolute;left:64px;top:390px;max-width:760px;max-height:260px;cursor:grab;touch-action:none;z-index:6}.logoHolder.dragging{cursor:grabbing}.logoImg,.logoText{transform:scale(var(--logo-scale));transform-origin:left bottom}.logoImg{display:block;width:auto;height:auto;max-width:720px;max-height:230px;object-fit:contain;object-position:left bottom}.logoText{display:block;white-space:pre-line;line-height:1;font-size:82px;font-weight:800;letter-spacing:-.045em;color:#fff;font-family:"Helvetica Neue",Helvetica,Arial,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}.hide{display:none!important}
 .actions{position:absolute;left:64px;top:520px;display:flex;align-items:center;gap:13px;z-index:5}.play{height:56px;padding:0 23px;border:0;border-radius:7px;background:#fff;color:#111;display:flex;align-items:center;gap:12px;font-size:21px;font-weight:700;letter-spacing:-.02em}.tri{width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:19px solid #111}.round{width:40px;height:40px;padding:0;border-radius:50%;border:2px solid rgba(255,255,255,.6);background:rgba(20,20,20,.2);color:#fff;display:flex;align-items:center;justify-content:center;line-height:1}.round.plus svg{width:22px;height:22px;display:block;stroke:#fff;stroke-width:1.85;stroke-linecap:round;stroke-linejoin:round;fill:none;overflow:visible;flex:none;transform:translate(-.6px,-.6px)}.round.thumb svg{width:24px;height:24px;display:block;stroke:#fff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;fill:none;overflow:visible;flex:none;transform:translate(.8px,-.5px)}
-.tagline{position:absolute;left:650px;top:330px;width:470px;font-size:24px;line-height:1.5;font-weight:700;letter-spacing:-.025em;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.98),0 3px 8px rgba(0,0,0,.92),0 8px 22px rgba(0,0,0,.72);-webkit-text-stroke:.35px rgba(0,0,0,.45);filter:drop-shadow(0 2px 3px rgba(0,0,0,.55));white-space:pre-wrap;word-break:keep-all;overflow-wrap:break-word;cursor:grab;touch-action:none;z-index:6}.tagline.dragging{cursor:grabbing}.meta{position:absolute;left:64px;top:610px;bottom:56px;width:650px;display:flex;flex-direction:column}.metaTop{display:flex;gap:12px;align-items:center;color:#d2d4d8;font-size:18px;font-weight:400;letter-spacing:-.01em;margin-bottom:16px;flex:none;line-height:28px}.metaTop>span{display:inline-flex;align-items:center;height:28px}.quality{font-size:13px;line-height:1;border:1px solid #d4d6da;border-radius:3px;padding:2px 5px;height:auto!important}.ageRow{display:none}.ageChip{width:32px;height:32px;padding:0;display:inline-block;border-radius:4px;background-color:transparent;background-repeat:no-repeat;background-position:center;background-size:28px 28px;font-size:0;color:transparent;line-height:0;flex:0 0 32px}.ageChip.all{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABmUlEQVR4nN2WP2vCQBjGnwSJU5yaID1xLFjFrXHoIIhfoAFH6Vz0C3QSp3YulM7F3X6BIjjWbiJ1F27RzUxmSYcmby5/LG25ZOgzvZfL3e/u3ufeRCmXy16xXYXWNKDoGrKQ57hwlzsc5hsUiu0qipcsE1AgRdeIoWpNI1OYKK1pQM3qGNOk6BrU3Gi+cgcW0h6ykkkx32+l9B0F2rUO7roDavenIyz4CgBgsQYm9pgm7DzfRMbedwewWAMAcPv6iOl6lgAmjvSC1SJti52nrvSvSgBb/gqpXalnCxTzAABMN+OvyAPatQ7FQdJZyaS8SAee6icUv/lGka0IkJXCMvfO1xTLNE4EKBpG3KFM48R2+GWQBV+B77dhHiUah4CiYZhuYmKPaQEyjUNA8cKnAWTlkUpbJaUOineyValjwT8ig2fXTxTHXT20ehhaPWr3X0bg+20IFHcUdIq1M57HeIEAx/f9vtS0zmCH3Akr/rEJfivl7OHKkzLTD/X/v/j5Az3HzQ3mOS5Ud7nLDegudygc5hsAyO1X/xP97XyOPbdaQAAAAABJRU5ErkJggg==")}.ageChip.r12{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABtklEQVR4nL2WL2zCQBTGP/4kVetA0CCKWDJH1cRWJiu3hCwZgrk53MDgJnEzK46puVVUEBIsZglj050jQVBFBayYIRomFsjauxstLXyq9/rSX7/Xd/cay2azy0oxjcvzA2RSCexC1sxBtz9HqzNFslJM4/YitRPQSplUYs2IfTyfLnflzCtr5iC+Lxjw6zTJuqn3LLwbX+v1tSJAlniomglz8u0L8HB3TMSYQFUbw5ws1usz6RADw8ajNvYFA4BqOQdR4FyxOC1R71kuWJSiAv+WMmpRS6r3LN8PGLUL6+ujq7eN+YTDgWFDlnjfwKAiHMoSD7mRZ75tSclQ4wPD3g74n2SJZ7pXPd0rSzzRoQCjaYKq3hwSDqvlHDU3NHBg2EST1co5ZiVCA2/uP11rWeJRLYvM/FBALwygH2eRAPWeRXy3l0ae2iihgeZkgXpz6IqVlIyv/bsV0AsTBW5jKVcKtA8BQNVMopQlRaBufJrjQEDWeGKNrNenE3/jiaUoRlYkJ00QMUta8xxNosBBFDgiHlSxUbuwDPWEgIpbM2dvMGvmIN7tz/cG7PbnSLY6UwDY26/+Dy3okeVLvqL0AAAAAElFTkSuQmCC")}.ageChip.r15{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABYUlEQVR4nGOUkJD4H6vDz+CqwMUgzMnMQAvw9vtfht0PvjEsvvKRgSVWh58hQpOXJhbBgDAnM9wOJlcFLppahgxcFbgYmGgVjNiAMCczAwtOSXMfBh4VIzj/3amtDD/fPmOQ9Ewl2oKHS5swxHBaKOmZysAmJAnnf7lzDu4QSixkwqZQ2NwHxTJqAqwWCpl508QyBgYcQcqraky0AVca/CmzkFfVmOHz7bNEW/rr3XPKLPx8+yzD59tnGYwmnSLKAHxxjc0xOFMpsUCnYSNOy25NysCwFGuioQbA5XOaWYgLkBykb09uwSlHTKFAkoWwBEWJhYM7SNmEJDEKb2zlJdUsZBeWwgg2mlqIDZBayNMs4+MCdE80gyeVPt8+C4X/691zhp9vnzE8XNrEwCYkQZTh2ApvxrO5Jv9JdCRFgOnt9790s+zt978MTLsffKObhbsffGNgWXzlIwMDAwPdmvoAYoRuQFDZ/XsAAAAASUVORK5CYII=")}.ageChip.r19{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABeUlEQVR4nM2WMUvDQBiG314DCRJo6VCSSP+BKFhE566CLi6ddVD/g5P/QTrUuWNpIHTrpouxm5tbIYEIpZUMyZDWxYamd7F3xIQ+U3J3uSffd5fvUtI0bdlWq2gpKmqkjDyYLiKMAh89fwaprVZxtVfJRbSiRsqxg7QUNVfZOi1FBckrjSxqpAwprbNxewPZ0OP7Sacbt/My6XQROm6ijSmUDR2Nu+TEX6YFAKhfnnMLv9/H8AZWoo2wBtYv+CcVhS0UiAIAQselUpcGlVLZ0BNrt43Xo7P4ujnsb32WirBycoy5PeYWikIJvYGFz4fH4oSirKeQZylSv0NeDp6fhMZnFopsMOAfUiqKUIRze4yP63vI++yoNsthZuFKCpvdx1NnhYSyoVNlzzMt7iojLARAFXXPtFJGstntTcOiOewLjS88wt1Iaei41Ekd/J55m+1/MX+jT53Sy+HpUvAlM0Gmi6gw2XQRgYwCvzDhKPAh9fwZABT2q/8D8vZu8/MH/c0AAAAASUVORK5CYII=")}.synopsisWrap{flex:1;min-height:0;overflow:hidden}.synopsis{margin:0;width:100%;font-size:17px;line-height:1.55;font-weight:500;letter-spacing:-.018em;color:#f2f2f2;white-space:pre-wrap;overflow:visible;word-break:keep-all;overflow-wrap:break-word}
+.tagline{position:absolute;left:650px;top:330px;width:470px;font-size:24px;line-height:1.5;font-weight:700;letter-spacing:-.025em;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.98),0 3px 8px rgba(0,0,0,.92),0 8px 22px rgba(0,0,0,.72);-webkit-text-stroke:.35px rgba(0,0,0,.45);filter:drop-shadow(0 2px 3px rgba(0,0,0,.55));white-space:pre-wrap;word-break:keep-all;overflow-wrap:break-word;cursor:grab;touch-action:none;z-index:6}.tagline.dragging{cursor:grabbing}.meta{position:absolute;left:64px;top:610px;bottom:56px;width:650px;display:flex;flex-direction:column}.metaTop{display:flex;gap:13px;align-items:center;color:#d2d4d8;font-size:18px;font-weight:400;letter-spacing:-.01em;margin-bottom:12px;flex:none}.quality{font-size:13px;border:1px solid #d4d6da;border-radius:3px;padding:1px 5px}.ageRow{margin-bottom:16px;flex:none}.ageChip{width:40px;height:40px;padding:0;display:block;border-radius:4px;background-color:transparent;background-repeat:no-repeat;background-position:center;background-size:34px 34px;font-size:0;color:transparent;line-height:0}.ageChip.all{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABmUlEQVR4nN2WP2vCQBjGnwSJU5yaID1xLFjFrXHoIIhfoAFH6Vz0C3QSp3YulM7F3X6BIjjWbiJ1F27RzUxmSYcmby5/LG25ZOgzvZfL3e/u3ufeRCmXy16xXYXWNKDoGrKQ57hwlzsc5hsUiu0qipcsE1AgRdeIoWpNI1OYKK1pQM3qGNOk6BrU3Gi+cgcW0h6ykkkx32+l9B0F2rUO7roDavenIyz4CgBgsQYm9pgm7DzfRMbedwewWAMAcPv6iOl6lgAmjvSC1SJti52nrvSvSgBb/gqpXalnCxTzAABMN+OvyAPatQ7FQdJZyaS8SAee6icUv/lGka0IkJXCMvfO1xTLNE4EKBpG3KFM48R2+GWQBV+B77dhHiUah4CiYZhuYmKPaQEyjUNA8cKnAWTlkUpbJaUOineyValjwT8ig2fXTxTHXT20ehhaPWr3X0bg+20IFHcUdIq1M57HeIEAx/f9vtS0zmCH3Akr/rEJfivl7OHKkzLTD/X/v/j5Az3HzQ3mOS5Ud7nLDegudygc5hsAyO1X/xP97XyOPbdaQAAAAABJRU5ErkJggg==")}.ageChip.r12{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABtklEQVR4nL2WL2zCQBTGP/4kVetA0CCKWDJH1cRWJiu3hCwZgrk53MDgJnEzK46puVVUEBIsZglj050jQVBFBayYIRomFsjauxstLXyq9/rSX7/Xd/cay2azy0oxjcvzA2RSCexC1sxBtz9HqzNFslJM4/YitRPQSplUYs2IfTyfLnflzCtr5iC+Lxjw6zTJuqn3LLwbX+v1tSJAlniomglz8u0L8HB3TMSYQFUbw5ws1usz6RADw8ajNvYFA4BqOQdR4FyxOC1R71kuWJSiAv+WMmpRS6r3LN8PGLUL6+ujq7eN+YTDgWFDlnjfwKAiHMoSD7mRZ75tSclQ4wPD3g74n2SJZ7pXPd0rSzzRoQCjaYKq3hwSDqvlHDU3NHBg2EST1co5ZiVCA2/uP11rWeJRLYvM/FBALwygH2eRAPWeRXy3l0ae2iihgeZkgXpz6IqVlIyv/bsV0AsTBW5jKVcKtA8BQNVMopQlRaBufJrjQEDWeGKNrNenE3/jiaUoRlYkJ00QMUta8xxNosBBFDgiHlSxUbuwDPWEgIpbM2dvMGvmIN7tz/cG7PbnSLY6UwDY26/+Dy3okeVLvqL0AAAAAElFTkSuQmCC")}.ageChip.r15{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABYUlEQVR4nGOUkJD4H6vDz+CqwMUgzMnMQAvw9vtfht0PvjEsvvKRgSVWh58hQpOXJhbBgDAnM9wOJlcFLppahgxcFbgYmGgVjNiAMCczAwtOSXMfBh4VIzj/3amtDD/fPmOQ9Ewl2oKHS5swxHBaKOmZysAmJAnnf7lzDu4QSixkwqZQ2NwHxTJqAqwWCpl508QyBgYcQcqraky0AVca/CmzkFfVmOHz7bNEW/rr3XPKLPx8+yzD59tnGYwmnSLKAHxxjc0xOFMpsUCnYSNOy25NysCwFGuioQbA5XOaWYgLkBykb09uwSlHTKFAkoWwBEWJhYM7SNmEJDEKb2zlJdUsZBeWwgg2mlqIDZBayNMs4+MCdE80gyeVPt8+C4X/691zhp9vnzE8XNrEwCYkQZTh2ApvxrO5Jv9JdCRFgOnt9790s+zt978MTLsffKObhbsffGNgWXzlIwMDAwPdmvoAYoRuQFDZ/XsAAAAASUVORK5CYII=")}.ageChip.r19{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABeUlEQVR4nM2WMUvDQBiG314DCRJo6VCSSP+BKFhE566CLi6ddVD/g5P/QTrUuWNpIHTrpouxm5tbIYEIpZUMyZDWxYamd7F3xIQ+U3J3uSffd5fvUtI0bdlWq2gpKmqkjDyYLiKMAh89fwaprVZxtVfJRbSiRsqxg7QUNVfZOi1FBckrjSxqpAwprbNxewPZ0OP7Sacbt/My6XQROm6ijSmUDR2Nu+TEX6YFAKhfnnMLv9/H8AZWoo2wBtYv+CcVhS0UiAIAQselUpcGlVLZ0BNrt43Xo7P4ujnsb32WirBycoy5PeYWikIJvYGFz4fH4oSirKeQZylSv0NeDp6fhMZnFopsMOAfUiqKUIRze4yP63vI++yoNsthZuFKCpvdx1NnhYSyoVNlzzMt7iojLARAFXXPtFJGstntTcOiOewLjS88wt1Iaei41Ekd/J55m+1/MX+jT53Sy+HpUvAlM0Gmi6gw2XQRgYwCvzDhKPAh9fwZABT2q/8D8vZu8/MH/c0AAAAASUVORK5CYII=")}.synopsisWrap{flex:1;min-height:0;overflow:hidden}.synopsis{margin:0;width:100%;font-size:17px;line-height:1.55;font-weight:500;letter-spacing:-.018em;color:#f2f2f2;white-space:pre-wrap;overflow:visible;word-break:keep-all;overflow-wrap:break-word}
 .info{position:absolute;right:54px;top:0;width:315px;font-size:16px;line-height:1.5;letter-spacing:-.015em}.info p{margin:0 0 16px;color:#92969c}.info span{color:#72767c}.info strong{color:#f5f5f5;font-weight:500}
 .modalOverlay{position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;padding:24px}.modalOverlay.open{display:flex}.modal{width:min(820px,96vw);max-height:min(760px,90vh);background:#17191e;border:1px solid #333842;border-radius:16px;box-shadow:0 28px 80px rgba(0,0,0,.55);display:flex;flex-direction:column;overflow:hidden}.modal.narrow{width:min(640px,96vw)}.modalHead{display:flex;align-items:start;justify-content:space-between;gap:20px;padding:20px 22px 14px;border-bottom:1px solid #2a2e35}.modalHead h3{margin:0 0 5px;font-size:20px}.modalHead p{margin:0;color:#8f959d;font-size:11px;line-height:1.5}.modalClose{width:36px;height:36px;border-radius:50%;border:1px solid #3c424c;background:#22252b;color:#fff;font-size:24px;cursor:pointer}.modalTools{display:grid;grid-template-columns:1fr auto;gap:9px;padding:14px 22px;border-bottom:1px solid #2a2e35}.modalTools input{margin:0}.modalBody{padding:6px 22px 18px;overflow:auto}.keywordGroup{padding:15px 0 4px;border-bottom:1px solid #252932}.keywordGroup:last-child{border:0}.keywordGroup h4{font-size:12px;color:#aeb4bd;margin:0 0 10px}.keywordGrid{display:flex;flex-wrap:wrap;gap:7px}.keyword{border:1px solid #383e48;background:#101216;color:#cfd3da;border-radius:999px;padding:7px 10px;font-size:12px;cursor:pointer}.keyword:hover{border-color:#666e7a}.keyword.selected{background:#f0f0f0;color:#111;border-color:#fff;font-weight:700}.modalCustom{display:grid;grid-template-columns:1fr auto;gap:8px;padding:14px 22px;border-top:1px solid #2a2e35}.modalFoot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 22px;border-top:1px solid #2a2e35}.selectedCount{font-size:12px;color:#aeb4bd}.footBtns{display:flex;gap:8px}
 .styleGrid{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.switchLine{display:flex;align-items:center;gap:8px;font-size:12px;color:#c7ccd3;margin:0 0 12px}.previewBox{margin:4px 0 16px;padding:18px;border:1px solid #2f353f;border-radius:12px;background:#101216}.previewLogo{min-height:90px;display:flex;align-items:flex-end}.previewLogoText{white-space:pre-line;font-size:64px;line-height:1;font-weight:800;letter-spacing:-.045em;color:#fff}
-.card.ratio-6-4 .logoHolder{top:290px}
-.card.ratio-6-4 .actions{top:432px}
-.card.ratio-6-4 .meta{top:510px;bottom:56px}
-.card.ratio-6-4 .close{top:18px}
-.card.ratio-6-4 .vignette{background:linear-gradient(180deg,transparent 0 50.5%,rgba(20,20,20,.08) 56.1%,rgba(24,24,24,.28) 60.6%,rgba(24,24,24,.62) 66.25%,#181818 73%,#181818 100%)}
-.card.ratio-6-4 .tagline{font-size:22px}
 .card.square .logoHolder{left:52px;max-width:560px}.card.square .logoImg{max-width:520px;max-height:190px}.card.square .logoText{font-size:70px}.card.square .actions{left:52px}.card.square .tagline{left:450px;max-width:300px}.card.square .meta{left:52px;width:470px}.card.square .info{right:28px;width:230px}.taglineTools{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}.taglineTools .wide{grid-column:1/-1}
+/* v47: 1200×800은 v43의 상단 100px만 제거하고 하단 좌표를 보존합니다. */
+.card{height:800px}
+.metaTop{height:40px;margin-bottom:26px;transform:translateY(12px)}
+.actions{transform:translateY(20px)}
+.ageChip{flex:none}
+.card.cropTop100 .logoHolder{top:290px}
+.card.cropTop100 .actions{top:450px}
+.card.cropTop100 .meta{top:524px}
+.card.cropTop100 .vignette{background:linear-gradient(180deg,transparent 0 394px,rgba(20,20,20,.08) 439px,rgba(24,24,24,.28) 475px,rgba(24,24,24,.62) 520px,#181818 570px,#181818 100%)}
+.card:not(.square) .info{right:34px}
+.card.square .info{right:18px}
+.sideFade{background:linear-gradient(90deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.04) 38%,rgba(0,0,0,.18) 68%,rgba(0,0,0,.62) 100%)}
 @media(max-width:1050px){.app{grid-template-columns:1fr}.panel{position:relative;max-height:none;border-right:0;border-bottom:1px solid var(--line)}.stageFrame{min-height:auto}}@media(max-width:620px){.panel{padding:14px}.grid2,.grid3,.styleGrid{grid-template-columns:1fr}.pickerRow{grid-template-columns:1fr}.ratingPicker{grid-template-columns:repeat(2,1fr)}.stageWrap{padding:8px}.stageFrame{padding:8px}.modalTools,.modalCustom{grid-template-columns:1fr}.modal{max-height:92vh}}
 </style>
 </head>
@@ -43,7 +49,7 @@ button{user-select:none}.app{display:grid;grid-template-columns:400px 1fr;min-he
         <button class="toggleBtn active" id="modeImageBtn" type="button">이미지 로고</button>
         <button class="toggleBtn" id="modeTextBtn" type="button">텍스트 로고</button>
       </div>
-      <div class="hint" style="margin-bottom:10px">배경은 화면 빈 곳을 드래그해서 이동, 로고는 로고 자체를 드래그해서 이동할 수 있어.</div>
+      <div class="hint" style="margin-bottom:10px">배경은 화면의 빈 곳을 드래그하여 이동하고, 로고는 로고 자체를 드래그하여 이동할 수 있습니다.</div>
       <label class="upload">배경 이미지 업로드<input id="bgUpload" type="file" accept="image/*"></label>
       <div class="imageOnly" id="imageControls">
         <label class="upload">제목 로고 이미지 업로드<input id="logoUpload" type="file" accept="image/*"></label>
@@ -153,15 +159,15 @@ button{user-select:none}.app{display:grid;grid-template-columns:400px 1fr;min-he
         <label>가로 미세조정<input id="bgFineX" type="range" min="-500" max="1500" value="500"></label>
         <label>세로 미세조정<input id="bgFineY" type="range" min="-500" max="1500" value="500"></label>
       </div>
-      <p class="cropHint">배경은 카드 위에서 직접 드래그해서 좌우·위아래로 자유롭게 움직일 수 있어. 마우스 휠이나 배경 크기 슬라이더로 확대/축소할 수 있고, 너무 줄어들어 프레임 가로보다 작아지지는 않게 제한돼. Shift+드래그는 더 천천히 움직여.</p>
+      <p class="cropHint">배경은 카드 위에서 직접 드래그하여 좌우·위아래로 자유롭게 움직일 수 있습니다. 마우스 휠이나 배경 크기 슬라이더로 확대·축소할 수 있으며, 프레임의 가로 너비보다 작아지지 않도록 제한됩니다. Shift를 누른 채 드래그하면 더 천천히 움직입니다.</p>
     </section>
 
     <section class="group"><h2>기본 정보</h2>
-      <label>캐치프레이즈<textarea id="tagline" rows="4" placeholder="엔터를 치면 미리보기에도 그대로 줄바꿈돼.">한 번의 선택이 모든 것을 바꾼다.
+      <label>캐치프레이즈<textarea id="tagline" rows="4" placeholder="Enter를 누르면 미리보기에도 줄바꿈이 그대로 반영됩니다.">한 번의 선택이 모든 것을 바꾼다.
 끝까지 보고 나면 처음부터 다시 보게 될 이야기.</textarea></label>
       <div class="taglineTools">
         <label>가로 위치<input id="tagX" type="range" min="0" max="1100" value="650"></label>
-        <label>세로 위치<input id="tagY" type="range" min="0" max="820" value="340"></label>
+        <label>세로 위치<input id="tagY" type="range" min="0" max="720" value="330"></label>
         <label class="wide">영역 너비<input id="tagWidth" type="range" min="180" max="900" value="470"></label>
         <label>글자 크기<input id="tagSize" type="range" min="14" max="42" value="22"></label>
         <label class="wide"><span style="display:flex;align-items:center;gap:8px"><input id="tagShadowEnabled" type="checkbox" checked style="width:14px;height:14px;margin:0;accent-color:#fff"> 캐치프레이즈 그림자 효과</span></label>
@@ -170,7 +176,7 @@ button{user-select:none}.app{display:grid;grid-template-columns:400px 1fr;min-he
         <label>그림자 거리<input id="tagShadowDistance" type="range" min="0" max="20" value="3"></label>
         <label>그림자 각도<input id="tagShadowAngle" type="range" min="0" max="360" value="90"></label>
       </div>
-      <p class="subhint">캐치프레이즈 자체를 미리보기에서 드래그해서 옮길 수도 있어. 입력창에서 엔터한 줄바꿈은 그대로 반영돼.</p>
+      <p class="subhint">캐치프레이즈 자체를 미리보기에서 드래그하여 옮길 수도 있습니다. 입력창의 줄바꿈은 그대로 반영됩니다.</p>
       <div class="grid3">
         <label>연도<input id="year" type="text" value="2026"></label>
         <label>러닝타임<input id="runtime" type="text" value="2시간 08분"></label>
@@ -212,7 +218,6 @@ button{user-select:none}.app{display:grid;grid-template-columns:400px 1fr;min-he
             <option value="1200x800" selected>6:4 · 1200 × 800</option>
             <option value="1600x900">16:9 · 1600 × 900</option>
             <option value="900x900">1:1 · 900 × 900</option>
-            <option value="1600x800">2:1 · 1600 × 800</option>
           </select>
         </label>
         <label>파일명<input id="filename" type="text" value="streaming-card"></label>
@@ -282,7 +287,7 @@ button{user-select:none}.app{display:grid;grid-template-columns:400px 1fr;min-he
 <div class="modalOverlay" id="keywordOverlay" aria-hidden="true">
   <div class="modal">
     <div class="modalHead">
-      <div><h3 id="keywordTitle">키워드 선택</h3><p>클릭해서 여러 개 고른 뒤 적용해줘.</p></div>
+      <div><h3 id="keywordTitle">키워드 선택</h3><p>여러 항목을 클릭하여 선택한 뒤 적용해 주세요.</p></div>
       <button class="modalClose" id="modalClose" type="button">×</button>
     </div>
     <div class="modalTools">
@@ -316,51 +321,34 @@ const defaults={
   year:'2026',runtime:'2시간 08분',quality:'HD',ageRating:'15',
   synopsis:'평범한 하루를 보내던 주인공은 우연한 사건을 계기로 익숙했던 세계의 이면을 마주한다. 예상치 못한 동료들과 함께 진실을 좇는 동안 과거의 선택과 숨겨진 비밀이 하나씩 드러나고, 마지막 순간 누구를 믿을지 결정해야 한다.',
   director:'감독 이름 예시',cast:'배우 A, 배우 B, 배우 C',showDirector:true,showCast:true,genres:'미국 작품, 드라마 영화, 미스터리 영화',features:'몰입감 강한, 반전 있는, 여운이 남는',filename:'streaming-card',ratio:'1200x800',
-  bgZoom:100,overlay:42,blur:0,logoScale:100,bgPosX:50,bgPosY:50,logoLeft:64,logoTop:390,tagX:650,tagY:340,tagWidth:470,tagSize:22,tagShadowEnabled:true,tagShadowStrength:88,tagShadowBlur:16,tagShadowDistance:3,tagShadowAngle:90,bgData:'',logoData:''
+  bgZoom:100,overlay:42,blur:0,logoScale:100,bgPosX:50,bgPosY:50,logoLeft:64,logoTop:290,tagX:650,tagY:330,tagWidth:470,tagSize:22,tagShadowEnabled:true,tagShadowStrength:88,tagShadowBlur:16,tagShadowDistance:3,tagShadowAngle:90,bgData:'',logoData:''
 };
 const st={ratio:'1200x800',bgPosX:50,bgPosY:50,bgData:'',logoData:'',logoMode:'image'};
 
 const GENRE_GROUPS={
-  '형식 / 포맷':['영화','시리즈','리미티드 시리즈','미니시리즈','드라마','다큐멘터리','다큐 시리즈','리얼리티 프로그램','버라이어티','토크쇼','스탠드업 코미디','애니','애니 시리즈','애니 영화','키즈 시리즈','키즈 영화','연작 영화','옴니버스','단편 영화','콘서트 영화','스페셜'],
-  '드라마':['드라마 영화','드라마 시리즈','한국 드라마','청춘 드라마','하이틴 시리즈','가족 드라마','로맨틱 드라마','사회 문제를 다룬 드라마','정치 드라마','법정 드라마','의학 드라마','직장 드라마','휴먼 드라마','시대극','사극','성장 드라마','스포츠 드라마','음악 드라마','학교 배경 드라마','LGBTQ+ 드라마','도서 원작 드라마','실화 바탕 드라마'],
-  '로맨스':['로맨스 영화','로맨틱 코미디','로맨스 시리즈','청춘 로맨스','하이틴 로맨스','시대 로맨스','판타지 로맨스','오피스 로맨스','로맨틱 드라마','LGBTQ+ 로맨스','금지된 사랑','삼각관계','첫사랑 이야기'],
-  '스릴러 / 미스터리':['스릴러','스릴러 영화','스릴러 시리즈','미스터리 영화','미스터리 시리즈','심리 스릴러','액션 스릴러','정치 스릴러','범죄 스릴러','서스펜스','추리물','탐정물','음모 스릴러','생존 스릴러','재난 스릴러','점입가경 스릴러','법정 스릴러','테크노 스릴러','스파이 스릴러'],
-  '범죄':['범죄 영화','범죄 시리즈','범죄 사건을 다루는 콘텐츠','갱스터 영화','느와르','하이스트','강도','마피아','조직범죄','살인 미스터리','연쇄살인범','경찰','형사 & 탐정','부패 경찰','복수극','감옥 배경 콘텐츠','법 집행기관'],
-  '액션 / 어드벤처':['액션 영화','액션 시리즈','액션 & 어드벤처','액션 & 어드벤처 영화','어드벤처 영화','스파이 액션','무술 영화','전쟁 액션','슈퍼히어로','재난 영화','생존 영화','복수 액션','군사 액션','추격전','서부극'],
-  'SF / 판타지':['SF 영화','SF 시리즈','SF & 판타지','SF & 판타지 애니','판타지 영화','판타지 시리즈','디스토피아','시간 여행','우주','외계인','사이버펑크','초능력','평행세계','마법','다크 판타지','도시 판타지','신화 & 전설','괴물','포스트아포칼립스'],
-  '공포':['공포 영화','공포 시리즈','심리 공포','초자연 공포','괴물 공포','슬래셔','좀비','뱀파이어','고딕 호러','바디 호러','포크 호러','오컬트','귀신','악마','생존 공포','코미디 공포'],
-  '코미디':['코미디 영화','코미디 시리즈','블랙 코미디','로맨틱 코미디','풍자','슬랩스틱','직장 코미디','가족 코미디','하이틴 코미디','다크 코미디','버디 코미디','코미디 드라마','시트콤'],
-  '애니메이션':['애니메이션','애니 시리즈','애니 영화','일본 애니','일본 미스터리 & 스릴러 애니메이션','일본 만화 원작 시리즈','액션 애니','판타지 애니','SF 애니','로맨스 애니','코미디 애니','스포츠 애니','청춘 애니','키즈 애니'],
-  '다큐 / 리얼리티':['다큐멘터리','다큐 시리즈','사회 & 문화 다큐','역사 다큐','자연 다큐','과학 & 자연 다큐','범죄 다큐','음악 다큐','스포츠 다큐','전기 다큐','음식 & 여행 다큐','리얼리티 프로그램','경쟁 리얼리티','데이트 리얼리티','라이프스타일 리얼리티'],
-  '소재 / 테마':['학교 배경 콘텐츠','고등학교 배경 콘텐츠','청소년','성장 이야기','가족','우정','결혼','복수','정치','법정','의학','음악','스포츠','요리','여행','직장','군대','전쟁','역사','왕실','종교','사회 문제','기술','게임','예술','패션','연예계','재벌','언론','형사 & 탐정','경찰'],
-  '원작 / 제작 특성':['도서 원작','도서 원작 시리즈','소설 원작','웹툰 원작','웹 소설 원작','일본 만화 원작','일본 만화 원작 시리즈','게임 원작','실화 바탕','실제 사건 바탕','전기 영화','리메이크','연작','앙상블 캐스트','멀티캐스팅','독립 영화','아트하우스 영화'],
-  '국가 / 지역':['한국 작품','미국 작품','영국 작품','일본 작품','프랑스 작품','독일 작품','스페인 작품','이탈리아 작품','폴란드 작품','멕시코 작품','브라질 작품','아르헨티나 작품','캐나다 작품','호주 작품','인도 작품','태국 작품','대만 작품','중국 작품','홍콩 작품','터키 작품','북유럽 작품','유럽 작품','아시아 작품','중남미 작품','할리우드 영화']
+  '형식':['영화','시리즈','리미티드 시리즈','미니시리즈','앤솔러지 시리즈','다큐멘터리','다큐시리즈','리얼리티 프로그램','버라이어티','토크쇼','애니메이션','애니 시리즈','스탠드업 코미디','단편 영화','인터랙티브'],
+  '국가 / 지역':['한국 작품','미국 작품','영국 작품','일본 작품','중국 작품','대만 작품','홍콩 작품','프랑스 작품','독일 작품','스페인 작품','이탈리아 작품','북유럽 작품','유럽 작품','캐나다 작품','호주 작품','남미 작품','인도 작품','동남아시아 작품','아시아 작품'],
+  '드라마':['드라마 영화','휴먼 드라마','가족 드라마','청춘 드라마','성장 드라마','학교 드라마','직장 드라마','의학 드라마','법정 드라마','정치 드라마','군사 드라마','역사 드라마','시대극','사회 문제 드라마','여성 서사','퀴어 드라마'],
+  '로맨스 / 코미디':['로맨스 영화','로맨틱 코미디','청춘 로맨스','시대극 로맨스','판타지 로맨스','오피스 로맨스','코미디 영화','블랙 코미디','슬랩스틱 코미디','풍자 코미디','가족 코미디','틴 코미디','버디 코미디'],
+  '스릴러 / 미스터리':['스릴러 영화','미스터리 영화','심리 스릴러','범죄 스릴러','정치 스릴러','첩보 스릴러','테크노 스릴러','법정 스릴러','의학 스릴러','에로틱 스릴러','서스펜스','밀실 미스터리','추리물','초자연 미스터리','음모론'],
+  '범죄 / 액션':['범죄 영화','액션 영화','갱스터 영화','마피아 영화','하이스트 영화','형사물','경찰물','수사물','복수극','킬러물','무술 영화','슈퍼히어로물','첩보물','스파이 액션','액션 어드벤처','재난 액션','밀리터리 액션'],
+  'SF / 판타지':['SF 영화','하드 SF','스페이스 오페라','사이버펑크','디스토피아','포스트 아포칼립스','시간 여행','평행 세계','외계인','로봇과 인공지능','판타지 영화','하이 판타지','다크 판타지','어반 판타지','마법','신화와 전설','초능력물'],
+  '공포':['공포 영화','심리 공포','고딕 호러','오컬트 호러','초자연 공포','코즈믹 호러','바디 호러','포크 호러','슬래셔','좀비물','괴수 영화','파운드 푸티지','호러 코미디','생존 공포'],
+  '전쟁 / 재난 / 생존':['전쟁 영화','반전 영화','재난 영화','생존 스릴러','조난물','포스트 아포칼립스','감염 재난','해양 재난','항공 재난','극한 환경','탈출극'],
+  '음악 / 스포츠 / 예술':['음악 영화','뮤지컬','댄스 영화','콘서트 영화','스포츠 영화','스포츠 드라마','전기 영화','예술 영화','문학 원작','공연 실황'],
+  '기타 세부 장르':['청춘 영화','성장 영화','가족 영화','어린이·가족 영화','로드 무비','버디 무비','웨스턴','느와르','네오 느와르','모큐멘터리','옴니버스','실험 영화','독립 영화','컬트 영화','B급 영화']
 };
-
 const FEATURE_GROUPS={
-  '분위기 / 톤':['어두운','불길한','서늘한','음산한','긴장감 넘치는','긴박감 넘치는','감정을 파고드는','감성적인','잔잔한','몽환적인','현실적인','강렬한','거친','색다른','위트 있는','유쾌한','발칙한','기분 좋아지는','따뜻한','힐링되는','낭만적인','로맨틱한','애절한','먹먹한','비극적인','희망찬','감동적인','진심 어린','여운이 남는','섬뜩한','기괴한','도발적인','자극적인','감각적인','세련된'],
-  '전개 / 서사':['몰입감 강한','예측불가한','반전 있는','점입가경','느린 전개의','빠른 전개의','서사 중심의','캐릭터 중심의','심리 게임','쫓고 쫓기는','미스터리','스릴러','액션 스릴러','그들만의 비밀','음모','비밀','복수','생존','시간 여행','초자연 현상','판타지','상상의 나래','위기의 가족','또 다른 주인공','멀티캐스팅','연작','관계의 변화','숨겨진 과거','운명적인 만남','금지된 사랑','사랑과 집착 사이','거부할 수 없는 이끌림'],
-  '관계 / 감정선':['첫사랑','로맨스','삼각관계','금지된 사랑','짝사랑','재회','운명적인 사랑','우정','브로맨스','가족 간의 이야기','부모와 자녀','형제자매','위기의 가족','결혼','이혼','복잡한 관계','사랑과 집착 사이','그들만의 비밀','청춘극','성장','자아 찾기'],
-  '인물 / 직업':['경찰','형사 & 탐정','부패 경찰','의사','변호사','검사','기자','교사','학생','청소년','군인','스파이','암살자','범죄자','조직폭력배','요리사','아티스트','연예인','운동선수','정치인','기업가','재벌','왕족'],
-  '배경 / 장소':['고등학교 배경 콘텐츠','학교 배경 콘텐츠','직장','병원','법정','감옥','군대','전쟁터','시골','대도시','마이애미','뉴욕','서울','도쿄','우주','외딴섬','설원','바다','폐쇄된 공간','포스트아포칼립스 세계'],
-  '소재':['복수','범죄','강도','살인','연쇄살인','납치','실종','음모','부패','정치','사회 문제','가족','우정','청소년','결혼','불륜','집착','생존','재난','질병','죽음','기억','비밀','정체성','시간 여행','초자연 현상','괴물','마법','외계인','기술','게임','음악','패션','스포츠','요리'],
-  '원작 / 수상 / 제작':['도서 원작','소설 원작','웹툰 원작','웹 소설 원작','일본 만화 원작','게임 원작','실화 바탕','실제 사건 바탕','평단의 찬사를 받은','수상작','에미상 후보작','백상예술대상','OST','강렬한 비주얼','스타 출연진','앙상블 캐스트','멀티캐스팅','독립 제작'],
-  '타깃 / 스타일':['청춘극','청소년','성인 취향','가족이 함께 보기 좋은','데이트 나이트','정주행 추천','몰아보기 좋은','가볍게 보기 좋은','생각할 거리를 주는','대화가 필요한','주말에 보기 좋은','밤에 보기 좋은','팬덤이 강한','컬트적인','감성 자극','두뇌 싸움','긴장감 위주','캐릭터 케미','강한 여성 캐릭터','안티히어로'],
-  '스트리밍식 표현 모음':['어두운','긴장감 넘치는','긴박감 넘치는','감정을 파고드는','청춘극','그들만의 비밀','시간 여행','심리 게임','상상의 나래','위기의 가족','색다른','강렬한 비주얼','부패 경찰','형사 & 탐정','평단의 찬사를 받은','또 다른 주인공','OST','고등학교 배경 콘텐츠','사랑과 집착 사이','점입가경 스릴러']
-};
-
-
-
-const FEATURE_GROUPS={
-  '분위기 / 톤':['어두운','불길한','서늘한','음산한','긴장감 넘치는','긴박감 넘치는','감정을 파고드는','감성적인','잔잔한','몽환적인','현실적인','강렬한','거친','색다른','위트 있는','유쾌한','발칙한','기분 좋아지는','따뜻한','힐링되는','낭만적인','로맨틱한','애절한','먹먹한','비극적인','희망찬','감동적인','진심 어린','여운이 남는','섬뜩한','기괴한','도발적인','자극적인','감각적인','세련된'],
-  '전개 / 서사':['몰입감 강한','예측불가한','반전 있는','점입가경','느린 전개의','빠른 전개의','서사 중심의','캐릭터 중심의','심리 게임','쫓고 쫓기는','미스터리','스릴러','액션 스릴러','그들만의 비밀','음모','비밀','복수','생존','시간 여행','초자연 현상','판타지','상상의 나래','위기의 가족','또 다른 주인공','멀티캐스팅','연작','관계의 변화','숨겨진 과거','운명적인 만남','금지된 사랑','사랑과 집착 사이','거부할 수 없는 이끌림'],
-  '관계 / 감정선':['첫사랑','로맨스','삼각관계','금지된 사랑','짝사랑','재회','운명적인 사랑','우정','브로맨스','가족 간의 이야기','부모와 자녀','형제자매','위기의 가족','결혼','이혼','복잡한 관계','사랑과 집착 사이','그들만의 비밀','청춘극','성장','자아 찾기'],
-  '인물 / 직업':['경찰','형사 & 탐정','부패 경찰','의사','변호사','검사','기자','교사','학생','청소년','군인','스파이','암살자','범죄자','조직폭력배','요리사','아티스트','연예인','운동선수','정치인','기업가','재벌','왕족'],
-  '배경 / 장소':['고등학교 배경 콘텐츠','학교 배경 콘텐츠','직장','병원','법정','감옥','군대','전쟁터','시골','대도시','마이애미','뉴욕','서울','도쿄','우주','외딴섬','설원','바다','폐쇄된 공간','포스트아포칼립스 세계'],
-  '소재':['복수','범죄','강도','살인','연쇄살인','납치','실종','음모','부패','정치','사회 문제','가족','우정','청소년','결혼','불륜','집착','생존','재난','질병','죽음','기억','비밀','정체성','시간 여행','초자연 현상','괴물','마법','외계인','기술','게임','음악','패션','스포츠','요리'],
-  '원작 / 수상 / 제작':['도서 원작','소설 원작','웹툰 원작','웹 소설 원작','일본 만화 원작','게임 원작','실화 바탕','실제 사건 바탕','평단의 찬사를 받은','수상작','에미상 후보작','백상예술대상','OST','강렬한 비주얼','스타 출연진','앙상블 캐스트','멀티캐스팅','독립 제작'],
-  '타깃 / 스타일':['청춘극','청소년','성인 취향','가족이 함께 보기 좋은','데이트 나이트','정주행 추천','몰아보기 좋은','가볍게 보기 좋은','생각할 거리를 주는','대화가 필요한','주말에 보기 좋은','밤에 보기 좋은','팬덤이 강한','컬트적인','감성 자극','두뇌 싸움','긴장감 위주','캐릭터 케미','강한 여성 캐릭터','안티히어로'],
-  '스트리밍식 표현 모음':['어두운','긴장감 넘치는','긴박감 넘치는','감정을 파고드는','청춘극','그들만의 비밀','시간 여행','심리 게임','상상의 나래','위기의 가족','색다른','강렬한 비주얼','부패 경찰','형사 & 탐정','평단의 찬사를 받은','또 다른 주인공','OST','고등학교 배경 콘텐츠','사랑과 집착 사이','점입가경 스릴러']
+  '긴장 / 어둠':['긴장감 넘치는','긴박감 넘치는','손에 땀을 쥐게 하는','숨 막히는','불안감을 조성하는','불길한','서늘한','음산한','오싹한','잔혹한','폭력적인','냉혹한','암울한','어두운','절망적인','퇴폐적인','광기 어린','도발적인'],
+  '감성 / 여운':['감정을 파고드는','감성적인','먹먹한','애절한','가슴 아픈','눈물 나는','뭉클한','진심 어린','따뜻한','다정한','희망찬','힐링되는','위로가 되는','향수를 자극하는','씁쓸한','쓸쓸한','서정적인','여운이 남는'],
+  '로맨스 / 관계':['설레는','로맨틱한','관능적인','매혹적인','운명적인','금지된 사랑','엇갈린 사랑','첫사랑','재회','애증 관계','거부할 수 없는 이끌림','천천히 가까워지는','친구에서 연인으로','적에서 연인으로','계약 관계','복잡한 삼각관계','그들만의 비밀'],
+  '밝음 / 유머':['유쾌한','기분 좋아지는','발랄한','경쾌한','통쾌한','엉뚱한','재치 있는','위트 있는','익살스러운','황당한','병맛인','풍자적인','블랙 유머','가볍게 즐기는','온 가족이 함께 보는'],
+  '미장센 / 감각':['몽환적인','신비로운','환상적인','초현실적인','감각적인','스타일리시한','화려한','아름다운 영상미','시적인','고전적인','복고풍','세련된','미니멀한','거친 질감','차가운 색감','따뜻한 색감','고딕한','사이버펑크 감성'],
+  '현실 / 지성':['현실적인','사실적인','지적인','철학적인','사색적인','사회 비판적인','정치적인','논쟁적인','도덕적 딜레마','인간 본성을 파고드는','심리 묘사가 섬세한','캐릭터 중심의','대화 중심의','역사적 사실에 기반한','교육적인'],
+  '전개 / 속도':['몰입감 강한','흡입력 있는','빠른 전개','느린 전개','차분한 전개','서사 중심의','에피소드형','예측불가한','반전 있는','충격적인 결말','열린 결말','복선이 촘촘한','퍼즐처럼 맞춰지는','비선형 서사','다층적인 이야기','쫓고 쫓기는','시간과의 싸움'],
+  '인물 / 갈등':['강렬한 캐릭터','결함 있는 주인공','안티히어로','믿을 수 없는 화자','여성 중심 서사','앙상블 캐스트','세대 갈등','가족 간의 이야기','우정 이야기','브로맨스','라이벌 관계','권력 투쟁','심리 게임','두뇌 싸움','배신과 음모','복수와 응징'],
+  '소재 / 설정':['실화 바탕','실존 인물','문학 원작','웹툰 원작','게임 원작','초자연 현상','시간 여행','평행 세계','기억 상실','루프물','생존기','고립된 공간','극한 환경','재난 이후','종말 이후','인공지능','외계 생명체','괴물과의 사투','범죄 실화','미제 사건'],
+  '평가 / 대상':['평단의 찬사를 받은','수상작','해외 영화제 수상','흥행작','숨은 명작','컬트적인','마니아층이 두터운','웰메이드','가볍게 보기 좋은','정주행하기 좋은','데이트에 좋은','혼자 보기 좋은','어른을 위한','청소년을 위한']
 };
 
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
@@ -404,32 +392,33 @@ $('bgZoom').addEventListener('input',bgStyle); $('blur').addEventListener('input
 function updateOverlay(){
   const hasBg=!!st.bgData;
   const v=+$('overlay').value||0;
-  const shadeAlpha=hasBg ? Math.max(0,Math.min(0.85,v/100)) : 0;
-  const sideFadeAlpha=hasBg ? Math.max(0,Math.min(1,v/55)) : 0;
+  const leftAlpha=hasBg ? Math.max(0,Math.min(.85,v/100)) : 0;
+  const rightAlpha=leftAlpha*.82;
 
-  // 하단 그라데이션은 배경 이미지 유무와 상관없이 항상 고정 표시.
-  $('shade').style.background=`rgba(0,0,0,${shadeAlpha})`;
-  $('sideFade').style.opacity=String(sideFadeAlpha);
+  // 어둡기 0에서는 원본 이미지를 유지합니다. 값을 올리면 전체가 어두워지되 왼쪽이 조금 더 진해집니다.
+  // 하단 그라데이션은 이 값과 상관없이 항상 고정 표시됩니다.
+  $('shade').style.background=`linear-gradient(90deg,rgba(0,0,0,${leftAlpha}),rgba(0,0,0,${rightAlpha}))`;
+  $('sideFade').style.opacity='0';
   $('vignette').style.opacity='1';
 }
 $('overlay').addEventListener('input',updateOverlay);
 updateOverlay();
 
 async function prepareImageFile(file,{maxSide=4096,preserveAlpha=false}={}){
-  if(!file || !file.type?.startsWith('image/')) throw new Error('이미지 파일만 업로드할 수 있어.');
-  if(file.size > 40*1024*1024) throw new Error('이미지 용량이 너무 커. 40MB 이하 이미지를 사용해줘.');
+  if(!file || !file.type?.startsWith('image/')) throw new Error('이미지 파일만 업로드할 수 있습니다.');
+  if(file.size > 40*1024*1024) throw new Error('이미지 용량이 너무 큽니다. 40MB 이하 이미지를 사용해 주세요.');
 
   const raw = await new Promise((resolve,reject)=>{
     const r=new FileReader();
     r.onload=()=>resolve(r.result);
-    r.onerror=()=>reject(new Error('이미지를 읽지 못했어.'));
+    r.onerror=()=>reject(new Error('이미지를 읽지 못했습니다.'));
     r.readAsDataURL(file);
   });
 
   const img = await new Promise((resolve,reject)=>{
     const im=new Image();
     im.onload=()=>resolve(im);
-    im.onerror=()=>reject(new Error('이미지를 불러오지 못했어.'));
+    im.onerror=()=>reject(new Error('이미지를 불러오지 못했습니다.'));
     im.src=raw;
   });
 
@@ -460,7 +449,7 @@ function handleFile(input,options,cb){
       cb(data);
     }catch(err){
       console.error(err);
-      alert(err.message||'이미지 업로드 중 오류가 났어.');
+      alert(err.message||'이미지 업로드 중 오류가 발생했습니다.');
       input.value='';
     }
   });
@@ -468,6 +457,7 @@ function handleFile(input,options,cb){
 handleFile($('bgUpload'),{maxSide:4096,preserveAlpha:false},data=>{
   st.bgData=data;
   $('bg').style.backgroundImage=`url("${data}")`;
+  updateOverlay();
 });
 handleFile($('logoUpload'),{maxSide:2400,preserveAlpha:true},data=>{
   st.logoData=data;
@@ -520,7 +510,7 @@ function alignInfoToSynopsis(){
   const cardRect=card.getBoundingClientRect();
   const metaRect=meta.getBoundingClientRect();
   const scale=cardScale();
-  const top=(metaRect.top-cardRect.top)/scale - 10;
+  const top=(metaRect.top-cardRect.top)/scale;
   info.style.top=Math.round(top)+'px';
   info.style.bottom='auto';
 }
@@ -571,12 +561,15 @@ $('card').addEventListener('pointerup',stopBgDrag); $('card').addEventListener('
 
 function ratio(v){
   const prevW=$('card').clientWidth||parseFloat($('card').style.width)||1200;
+  const logoTop=parseFloat(getComputedStyle($('logoHolder')).top)||390;
   st.ratio=v;
   const [w,h]=v.split('x').map(Number);
   $('card').style.width=w+'px';
   $('card').style.height=h+'px';
   $('card').classList.toggle('square',v==='900x900');
-  $('card').classList.toggle('ratio-6-4',v==='1200x800');
+  $('card').classList.toggle('cropTop100',v==='1200x800');
+  if(v==='1200x800' && Math.abs(logoTop-390)<1) $('logoHolder').style.top='290px';
+  if(v!=='1200x800' && Math.abs(logoTop-290)<1) $('logoHolder').style.top='390px';
   syncRatioDependentControls(w,h);
   scaleHorizontalLayout(prevW,w);
   $('sizeLabel').textContent=`${w} × ${h}`;
@@ -648,11 +641,11 @@ $('exportBtn').onclick=async()=>{
       new Promise(resolve=>setTimeout(resolve,3000))
     ]);
   }
-  if(!window.html2canvas) return alert('PNG 저장 기능을 불러오지 못했어. 인터넷 연결을 확인하고 새로고침해줘.');
+  if(!window.html2canvas) return alert('PNG 저장 기능을 불러오지 못했습니다. 인터넷 연결을 확인한 뒤 새로고침해 주세요.');
 
   const b=$('exportBtn'), old=b.textContent, card=$('card'), tr=card.style.transform, mg=card.style.margin;
   b.disabled=true;
-  b.textContent='이미지 만드는 중…';
+  b.textContent='이미지를 만드는 중입니다…';
   card.style.transform='none';
   card.style.margin='0';
 
@@ -678,7 +671,7 @@ $('exportBtn').onclick=async()=>{
     setTimeout(()=>URL.revokeObjectURL(url),1500);
   }catch(e){
     console.error(e);
-    alert('PNG 저장 중 오류가 났어. 이미지가 너무 크다면 조금 작은 파일로 다시 시도해줘.');
+    alert('PNG 저장 중 오류가 발생했습니다. 이미지가 너무 크다면 조금 작은 파일로 다시 시도해 주세요.');
   }finally{
     card.style.transform=tr;
     card.style.margin=mg;
