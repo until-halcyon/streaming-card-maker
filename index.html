@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark">
 <title>Streaming Card Maker</title>
-<!-- Public GitHub Pages build: v43 -->
+<!-- Public GitHub Pages build: v57 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Bebas+Neue&family=Black+Han+Sans&family=Bungee&family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Serif+Display&family=Do+Hyeon&family=Gugi&family=Jua&family=Montserrat:wght@300;400;500;600;700;800;900&family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Noto+Serif+KR:wght@400;500;600;700;800;900&family=Oswald:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Raleway:wght@300;400;500;600;700;800;900&family=Roboto+Condensed:wght@300;400;500;600;700;800;900&family=Song+Myung&display=swap" rel="stylesheet">
@@ -19,10 +19,16 @@ button{user-select:none}.app{display:grid;grid-template-columns:400px 1fr;min-he
 .card{position:relative;width:1200px;height:900px;flex:none;overflow:hidden;background:#fff;transform-origin:center;cursor:grab;touch-action:none}.card.bg-dragging{cursor:grabbing}.bg{position:absolute;inset:-20%;background:none;background-size:cover;background-position:50% 50%;will-change:transform,filter;background-repeat:no-repeat;pointer-events:none}.shade{position:absolute;inset:0;background:rgba(0,0,0,0);pointer-events:none}.sideFade{position:absolute;inset:0;pointer-events:none;opacity:0;background:linear-gradient(90deg,rgba(0,0,0,.68),rgba(0,0,0,.10) 52%,rgba(0,0,0,.14))}.vignette{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 0 56%,rgba(20,20,20,.08) 61%,rgba(24,24,24,.28) 65%,rgba(24,24,24,.62) 70%,#181818 76%,#181818 100%)}.close{position:absolute;right:24px;top:18px;width:42px;height:42px;border-radius:50%;border:2px solid rgba(255,255,255,.25);background:rgba(0,0,0,.25);z-index:7}.close::before,.close::after{content:"";position:absolute;left:50%;top:50%;width:24px;height:2.5px;background:#fff;border-radius:2px;transform-origin:center}.close::before{transform:translate(-50%,-50%) rotate(45deg)}.close::after{transform:translate(-50%,-50%) rotate(-45deg)}
 .logoHolder{position:absolute;left:64px;top:390px;max-width:760px;max-height:260px;cursor:grab;touch-action:none;z-index:6}.logoHolder.dragging{cursor:grabbing}.logoImg,.logoText{transform:scale(var(--logo-scale));transform-origin:left bottom}.logoImg{display:block;width:auto;height:auto;max-width:720px;max-height:230px;object-fit:contain;object-position:left bottom}.logoText{display:block;white-space:pre-line;line-height:1;font-size:82px;font-weight:800;letter-spacing:-.045em;color:#fff;font-family:"Helvetica Neue",Helvetica,Arial,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}.hide{display:none!important}
 .actions{position:absolute;left:64px;top:520px;display:flex;align-items:center;gap:13px;z-index:5}.play{height:56px;padding:0 23px;border:0;border-radius:7px;background:#fff;color:#111;display:flex;align-items:center;gap:12px;font-size:21px;font-weight:700;letter-spacing:-.02em}.tri{width:0;height:0;border-top:12px solid transparent;border-bottom:12px solid transparent;border-left:19px solid #111}.round{width:40px;height:40px;padding:0;border-radius:50%;border:2px solid rgba(255,255,255,.6);background:rgba(20,20,20,.2);color:#fff;display:flex;align-items:center;justify-content:center;line-height:1}.round.plus svg{width:22px;height:22px;display:block;stroke:#fff;stroke-width:1.85;stroke-linecap:round;stroke-linejoin:round;fill:none;overflow:visible;flex:none;transform:translate(-.6px,-.6px)}.round.thumb svg{width:24px;height:24px;display:block;stroke:#fff;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;fill:none;overflow:visible;flex:none;transform:translate(.8px,-.5px)}
-.tagline{position:absolute;left:650px;top:330px;width:470px;font-size:24px;line-height:1.5;font-weight:700;letter-spacing:-.025em;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.98),0 3px 8px rgba(0,0,0,.92),0 8px 22px rgba(0,0,0,.72);-webkit-text-stroke:.35px rgba(0,0,0,.45);filter:drop-shadow(0 2px 3px rgba(0,0,0,.55));white-space:pre-wrap;word-break:keep-all;overflow-wrap:break-word;cursor:grab;touch-action:none;z-index:6}.tagline.dragging{cursor:grabbing}.meta{position:absolute;left:64px;top:610px;bottom:56px;width:650px;display:flex;flex-direction:column}.metaTop{display:flex;gap:13px;align-items:center;color:#d2d4d8;font-size:18px;font-weight:400;letter-spacing:-.01em;margin-bottom:12px;flex:none}.quality{font-size:13px;border:1px solid #d4d6da;border-radius:3px;padding:1px 5px}.ageRow{margin-bottom:16px;flex:none}.ageChip{width:40px;height:40px;padding:0;display:block;border-radius:4px;background-color:transparent;background-repeat:no-repeat;background-position:center;background-size:34px 34px;font-size:0;color:transparent;line-height:0}.ageChip.all{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABmUlEQVR4nN2WP2vCQBjGnwSJU5yaID1xLFjFrXHoIIhfoAFH6Vz0C3QSp3YulM7F3X6BIjjWbiJ1F27RzUxmSYcmby5/LG25ZOgzvZfL3e/u3ufeRCmXy16xXYXWNKDoGrKQ57hwlzsc5hsUiu0qipcsE1AgRdeIoWpNI1OYKK1pQM3qGNOk6BrU3Gi+cgcW0h6ykkkx32+l9B0F2rUO7roDavenIyz4CgBgsQYm9pgm7DzfRMbedwewWAMAcPv6iOl6lgAmjvSC1SJti52nrvSvSgBb/gqpXalnCxTzAABMN+OvyAPatQ7FQdJZyaS8SAee6icUv/lGka0IkJXCMvfO1xTLNE4EKBpG3KFM48R2+GWQBV+B77dhHiUah4CiYZhuYmKPaQEyjUNA8cKnAWTlkUpbJaUOineyValjwT8ig2fXTxTHXT20ehhaPWr3X0bg+20IFHcUdIq1M57HeIEAx/f9vtS0zmCH3Akr/rEJfivl7OHKkzLTD/X/v/j5Az3HzQ3mOS5Ud7nLDegudygc5hsAyO1X/xP97XyOPbdaQAAAAABJRU5ErkJggg==")}.ageChip.r12{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABtklEQVR4nL2WL2zCQBTGP/4kVetA0CCKWDJH1cRWJiu3hCwZgrk53MDgJnEzK46puVVUEBIsZglj050jQVBFBayYIRomFsjauxstLXyq9/rSX7/Xd/cay2azy0oxjcvzA2RSCexC1sxBtz9HqzNFslJM4/YitRPQSplUYs2IfTyfLnflzCtr5iC+Lxjw6zTJuqn3LLwbX+v1tSJAlniomglz8u0L8HB3TMSYQFUbw5ws1usz6RADw8ajNvYFA4BqOQdR4FyxOC1R71kuWJSiAv+WMmpRS6r3LN8PGLUL6+ujq7eN+YTDgWFDlnjfwKAiHMoSD7mRZ75tSclQ4wPD3g74n2SJZ7pXPd0rSzzRoQCjaYKq3hwSDqvlHDU3NHBg2EST1co5ZiVCA2/uP11rWeJRLYvM/FBALwygH2eRAPWeRXy3l0ae2iihgeZkgXpz6IqVlIyv/bsV0AsTBW5jKVcKtA8BQNVMopQlRaBufJrjQEDWeGKNrNenE3/jiaUoRlYkJ00QMUta8xxNosBBFDgiHlSxUbuwDPWEgIpbM2dvMGvmIN7tz/cG7PbnSLY6UwDY26/+Dy3okeVLvqL0AAAAAElFTkSuQmCC")}.ageChip.r15{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABYUlEQVR4nGOUkJD4H6vDz+CqwMUgzMnMQAvw9vtfht0PvjEsvvKRgSVWh58hQpOXJhbBgDAnM9wOJlcFLppahgxcFbgYmGgVjNiAMCczAwtOSXMfBh4VIzj/3amtDD/fPmOQ9Ewl2oKHS5swxHBaKOmZysAmJAnnf7lzDu4QSixkwqZQ2NwHxTJqAqwWCpl508QyBgYcQcqraky0AVca/CmzkFfVmOHz7bNEW/rr3XPKLPx8+yzD59tnGYwmnSLKAHxxjc0xOFMpsUCnYSNOy25NysCwFGuioQbA5XOaWYgLkBykb09uwSlHTKFAkoWwBEWJhYM7SNmEJDEKb2zlJdUsZBeWwgg2mlqIDZBayNMs4+MCdE80gyeVPt8+C4X/691zhp9vnzE8XNrEwCYkQZTh2ApvxrO5Jv9JdCRFgOnt9790s+zt978MTLsffKObhbsffGNgWXzlIwMDAwPdmvoAYoRuQFDZ/XsAAAAASUVORK5CYII=")}.ageChip.r19{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABeUlEQVR4nM2WMUvDQBiG314DCRJo6VCSSP+BKFhE566CLi6ddVD/g5P/QTrUuWNpIHTrpouxm5tbIYEIpZUMyZDWxYamd7F3xIQ+U3J3uSffd5fvUtI0bdlWq2gpKmqkjDyYLiKMAh89fwaprVZxtVfJRbSiRsqxg7QUNVfZOi1FBckrjSxqpAwprbNxewPZ0OP7Sacbt/My6XQROm6ijSmUDR2Nu+TEX6YFAKhfnnMLv9/H8AZWoo2wBtYv+CcVhS0UiAIAQselUpcGlVLZ0BNrt43Xo7P4ujnsb32WirBycoy5PeYWikIJvYGFz4fH4oSirKeQZylSv0NeDp6fhMZnFopsMOAfUiqKUIRze4yP63vI++yoNsthZuFKCpvdx1NnhYSyoVNlzzMt7iojLARAFXXPtFJGstntTcOiOewLjS88wt1Iaei41Ekd/J55m+1/MX+jT53Sy+HpUvAlM0Gmi6gw2XQRgYwCvzDhKPAh9fwZABT2q/8D8vZu8/MH/c0AAAAASUVORK5CYII=")}.synopsisWrap{flex:1;min-height:0;overflow:hidden}.synopsis{margin:0;width:100%;font-size:17px;line-height:1.55;font-weight:500;letter-spacing:-.018em;color:#f2f2f2;white-space:pre-wrap;overflow:visible;word-break:keep-all;overflow-wrap:break-word}
+.tagline{position:absolute;left:650px;top:330px;width:470px;font-size:24px;line-height:1.5;font-weight:700;letter-spacing:-.025em;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.98),0 3px 8px rgba(0,0,0,.92),0 8px 22px rgba(0,0,0,.72);-webkit-text-stroke:.35px rgba(0,0,0,.45);filter:drop-shadow(0 2px 3px rgba(0,0,0,.55));white-space:pre-wrap;word-break:keep-all;overflow-wrap:break-word;cursor:grab;touch-action:none;z-index:6}.tagline.dragging{cursor:grabbing}.meta{position:absolute;left:64px;top:610px;bottom:56px;width:650px;display:flex;flex-direction:column}.metaTop{display:flex;gap:12px;align-items:center;color:#d2d4d8;font-size:18px;font-weight:400;letter-spacing:-.01em;margin-bottom:16px;flex:none;line-height:28px}.metaTop>span{display:inline-flex;align-items:center;height:28px}.quality{font-size:13px;line-height:1;border:1px solid #d4d6da;border-radius:3px;padding:2px 5px;height:auto!important}.ageRow{display:none}.ageChip{width:32px;height:32px;padding:0;display:inline-block;border-radius:4px;background-color:transparent;background-repeat:no-repeat;background-position:center;background-size:28px 28px;font-size:0;color:transparent;line-height:0;flex:0 0 32px}.ageChip.all{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABmUlEQVR4nN2WP2vCQBjGnwSJU5yaID1xLFjFrXHoIIhfoAFH6Vz0C3QSp3YulM7F3X6BIjjWbiJ1F27RzUxmSYcmby5/LG25ZOgzvZfL3e/u3ufeRCmXy16xXYXWNKDoGrKQ57hwlzsc5hsUiu0qipcsE1AgRdeIoWpNI1OYKK1pQM3qGNOk6BrU3Gi+cgcW0h6ykkkx32+l9B0F2rUO7roDavenIyz4CgBgsQYm9pgm7DzfRMbedwewWAMAcPv6iOl6lgAmjvSC1SJti52nrvSvSgBb/gqpXalnCxTzAABMN+OvyAPatQ7FQdJZyaS8SAee6icUv/lGka0IkJXCMvfO1xTLNE4EKBpG3KFM48R2+GWQBV+B77dhHiUah4CiYZhuYmKPaQEyjUNA8cKnAWTlkUpbJaUOineyValjwT8ig2fXTxTHXT20ehhaPWr3X0bg+20IFHcUdIq1M57HeIEAx/f9vtS0zmCH3Akr/rEJfivl7OHKkzLTD/X/v/j5Az3HzQ3mOS5Ud7nLDegudygc5hsAyO1X/xP97XyOPbdaQAAAAABJRU5ErkJggg==")}.ageChip.r12{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABtklEQVR4nL2WL2zCQBTGP/4kVetA0CCKWDJH1cRWJiu3hCwZgrk53MDgJnEzK46puVVUEBIsZglj050jQVBFBayYIRomFsjauxstLXyq9/rSX7/Xd/cay2azy0oxjcvzA2RSCexC1sxBtz9HqzNFslJM4/YitRPQSplUYs2IfTyfLnflzCtr5iC+Lxjw6zTJuqn3LLwbX+v1tSJAlniomglz8u0L8HB3TMSYQFUbw5ws1usz6RADw8ajNvYFA4BqOQdR4FyxOC1R71kuWJSiAv+WMmpRS6r3LN8PGLUL6+ujq7eN+YTDgWFDlnjfwKAiHMoSD7mRZ75tSclQ4wPD3g74n2SJZ7pXPd0rSzzRoQCjaYKq3hwSDqvlHDU3NHBg2EST1co5ZiVCA2/uP11rWeJRLYvM/FBALwygH2eRAPWeRXy3l0ae2iihgeZkgXpz6IqVlIyv/bsV0AsTBW5jKVcKtA8BQNVMopQlRaBufJrjQEDWeGKNrNenE3/jiaUoRlYkJ00QMUta8xxNosBBFDgiHlSxUbuwDPWEgIpbM2dvMGvmIN7tz/cG7PbnSLY6UwDY26/+Dy3okeVLvqL0AAAAAElFTkSuQmCC")}.ageChip.r15{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABYUlEQVR4nGOUkJD4H6vDz+CqwMUgzMnMQAvw9vtfht0PvjEsvvKRgSVWh58hQpOXJhbBgDAnM9wOJlcFLppahgxcFbgYmGgVjNiAMCczAwtOSXMfBh4VIzj/3amtDD/fPmOQ9Ewl2oKHS5swxHBaKOmZysAmJAnnf7lzDu4QSixkwqZQ2NwHxTJqAqwWCpl508QyBgYcQcqraky0AVca/CmzkFfVmOHz7bNEW/rr3XPKLPx8+yzD59tnGYwmnSLKAHxxjc0xOFMpsUCnYSNOy25NysCwFGuioQbA5XOaWYgLkBykb09uwSlHTKFAkoWwBEWJhYM7SNmEJDEKb2zlJdUsZBeWwgg2mlqIDZBayNMs4+MCdE80gyeVPt8+C4X/691zhp9vnzE8XNrEwCYkQZTh2ApvxrO5Jv9JdCRFgOnt9790s+zt978MTLsffKObhbsffGNgWXzlIwMDAwPdmvoAYoRuQFDZ/XsAAAAASUVORK5CYII=")}.ageChip.r19{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAABeUlEQVR4nM2WMUvDQBiG314DCRJo6VCSSP+BKFhE566CLi6ddVD/g5P/QTrUuWNpIHTrpouxm5tbIYEIpZUMyZDWxYamd7F3xIQ+U3J3uSffd5fvUtI0bdlWq2gpKmqkjDyYLiKMAh89fwaprVZxtVfJRbSiRsqxg7QUNVfZOi1FBckrjSxqpAwprbNxewPZ0OP7Sacbt/My6XQROm6ijSmUDR2Nu+TEX6YFAKhfnnMLv9/H8AZWoo2wBtYv+CcVhS0UiAIAQselUpcGlVLZ0BNrt43Xo7P4ujnsb32WirBycoy5PeYWikIJvYGFz4fH4oSirKeQZylSv0NeDp6fhMZnFopsMOAfUiqKUIRze4yP63vI++yoNsthZuFKCpvdx1NnhYSyoVNlzzMt7iojLARAFXXPtFJGstntTcOiOewLjS88wt1Iaei41Ekd/J55m+1/MX+jT53Sy+HpUvAlM0Gmi6gw2XQRgYwCvzDhKPAh9fwZABT2q/8D8vZu8/MH/c0AAAAASUVORK5CYII=")}.synopsisWrap{flex:1;min-height:0;overflow:hidden}.synopsis{margin:0;width:100%;font-size:17px;line-height:1.55;font-weight:500;letter-spacing:-.018em;color:#f2f2f2;white-space:pre-wrap;overflow:visible;word-break:keep-all;overflow-wrap:break-word}
 .info{position:absolute;right:54px;top:0;width:315px;font-size:16px;line-height:1.5;letter-spacing:-.015em}.info p{margin:0 0 16px;color:#92969c}.info span{color:#72767c}.info strong{color:#f5f5f5;font-weight:500}
 .modalOverlay{position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;padding:24px}.modalOverlay.open{display:flex}.modal{width:min(820px,96vw);max-height:min(760px,90vh);background:#17191e;border:1px solid #333842;border-radius:16px;box-shadow:0 28px 80px rgba(0,0,0,.55);display:flex;flex-direction:column;overflow:hidden}.modal.narrow{width:min(640px,96vw)}.modalHead{display:flex;align-items:start;justify-content:space-between;gap:20px;padding:20px 22px 14px;border-bottom:1px solid #2a2e35}.modalHead h3{margin:0 0 5px;font-size:20px}.modalHead p{margin:0;color:#8f959d;font-size:11px;line-height:1.5}.modalClose{width:36px;height:36px;border-radius:50%;border:1px solid #3c424c;background:#22252b;color:#fff;font-size:24px;cursor:pointer}.modalTools{display:grid;grid-template-columns:1fr auto;gap:9px;padding:14px 22px;border-bottom:1px solid #2a2e35}.modalTools input{margin:0}.modalBody{padding:6px 22px 18px;overflow:auto}.keywordGroup{padding:15px 0 4px;border-bottom:1px solid #252932}.keywordGroup:last-child{border:0}.keywordGroup h4{font-size:12px;color:#aeb4bd;margin:0 0 10px}.keywordGrid{display:flex;flex-wrap:wrap;gap:7px}.keyword{border:1px solid #383e48;background:#101216;color:#cfd3da;border-radius:999px;padding:7px 10px;font-size:12px;cursor:pointer}.keyword:hover{border-color:#666e7a}.keyword.selected{background:#f0f0f0;color:#111;border-color:#fff;font-weight:700}.modalCustom{display:grid;grid-template-columns:1fr auto;gap:8px;padding:14px 22px;border-top:1px solid #2a2e35}.modalFoot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 22px;border-top:1px solid #2a2e35}.selectedCount{font-size:12px;color:#aeb4bd}.footBtns{display:flex;gap:8px}
 .styleGrid{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.switchLine{display:flex;align-items:center;gap:8px;font-size:12px;color:#c7ccd3;margin:0 0 12px}.previewBox{margin:4px 0 16px;padding:18px;border:1px solid #2f353f;border-radius:12px;background:#101216}.previewLogo{min-height:90px;display:flex;align-items:flex-end}.previewLogoText{white-space:pre-line;font-size:64px;line-height:1;font-weight:800;letter-spacing:-.045em;color:#fff}
+.card.ratio-6-4 .logoHolder{top:290px}
+.card.ratio-6-4 .actions{top:432px}
+.card.ratio-6-4 .meta{top:510px;bottom:56px}
+.card.ratio-6-4 .close{top:18px}
+.card.ratio-6-4 .vignette{background:linear-gradient(180deg,transparent 0 50.5%,rgba(20,20,20,.08) 56.1%,rgba(24,24,24,.28) 60.6%,rgba(24,24,24,.62) 66.25%,#181818 73%,#181818 100%)}
+.card.ratio-6-4 .tagline{font-size:22px}
 .card.square .logoHolder{left:52px;max-width:560px}.card.square .logoImg{max-width:520px;max-height:190px}.card.square .logoText{font-size:70px}.card.square .actions{left:52px}.card.square .tagline{left:450px;max-width:300px}.card.square .meta{left:52px;width:470px}.card.square .info{right:28px;width:230px}.taglineTools{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}.taglineTools .wide{grid-column:1/-1}
 @media(max-width:1050px){.app{grid-template-columns:1fr}.panel{position:relative;max-height:none;border-right:0;border-bottom:1px solid var(--line)}.stageFrame{min-height:auto}}@media(max-width:620px){.panel{padding:14px}.grid2,.grid3,.styleGrid{grid-template-columns:1fr}.pickerRow{grid-template-columns:1fr}.ratingPicker{grid-template-columns:repeat(2,1fr)}.stageWrap{padding:8px}.stageFrame{padding:8px}.modalTools,.modalCustom{grid-template-columns:1fr}.modal{max-height:92vh}}
 </style>
@@ -155,9 +161,9 @@ button{user-select:none}.app{display:grid;grid-template-columns:400px 1fr;min-he
 끝까지 보고 나면 처음부터 다시 보게 될 이야기.</textarea></label>
       <div class="taglineTools">
         <label>가로 위치<input id="tagX" type="range" min="0" max="1100" value="650"></label>
-        <label>세로 위치<input id="tagY" type="range" min="0" max="820" value="380"></label>
+        <label>세로 위치<input id="tagY" type="range" min="0" max="820" value="340"></label>
         <label class="wide">영역 너비<input id="tagWidth" type="range" min="180" max="900" value="470"></label>
-        <label>글자 크기<input id="tagSize" type="range" min="14" max="42" value="24"></label>
+        <label>글자 크기<input id="tagSize" type="range" min="14" max="42" value="22"></label>
         <label class="wide"><span style="display:flex;align-items:center;gap:8px"><input id="tagShadowEnabled" type="checkbox" checked style="width:14px;height:14px;margin:0;accent-color:#fff"> 캐치프레이즈 그림자 효과</span></label>
         <label>그림자 세기<input id="tagShadowStrength" type="range" min="0" max="100" value="88"></label>
         <label>그림자 번짐<input id="tagShadowBlur" type="range" min="0" max="40" value="16"></label>
@@ -203,9 +209,10 @@ button{user-select:none}.app{display:grid;grid-template-columns:400px 1fr;min-he
       <div class="grid2">
         <label>비율
           <select id="ratio">
-            <option value="1200x900" selected>4:3</option>
-            <option value="1600x900">16:9</option>
-            <option value="900x900">1:1 정사각형</option>
+            <option value="1200x800" selected>6:4 · 1200 × 800</option>
+            <option value="1600x900">16:9 · 1600 × 900</option>
+            <option value="900x900">1:1 · 900 × 900</option>
+            <option value="1600x800">2:1 · 1600 × 800</option>
           </select>
         </label>
         <label>파일명<input id="filename" type="text" value="streaming-card"></label>
@@ -216,7 +223,7 @@ button{user-select:none}.app{display:grid;grid-template-columns:400px 1fr;min-he
   </aside>
 
   <main class="stageWrap">
-    <div class="toolbar"><span>실시간 미리보기</span><span id="sizeLabel">1200 × 900</span></div>
+    <div class="toolbar"><span>실시간 미리보기</span><span id="sizeLabel">1200 × 800</span></div>
     <div class="stageFrame">
       <article class="card" id="card" aria-label="streaming detail card preview">
         <div class="bg" id="bg"></div>
@@ -254,8 +261,8 @@ button{user-select:none}.app{display:grid;grid-template-columns:400px 1fr;min-he
             <span id="yearOut">2026</span>
             <span id="runtimeOut">2시간 08분</span>
             <span class="quality" id="qualityOut">HD</span>
+            <span class="ageChip r15" id="ageChip">15</span>
           </div>
-          <div class="ageRow"><span class="ageChip r15" id="ageChip">15</span></div>
           <div class="synopsisWrap" id="synopsisWrap">
             <p class="synopsis" id="synopsisOut"></p>
           </div>
@@ -308,22 +315,52 @@ const defaults={
   tagline:'한 번의 선택이 모든 것을 바꾼다.\n끝까지 보고 나면 처음부터 다시 보게 될 이야기.',
   year:'2026',runtime:'2시간 08분',quality:'HD',ageRating:'15',
   synopsis:'평범한 하루를 보내던 주인공은 우연한 사건을 계기로 익숙했던 세계의 이면을 마주한다. 예상치 못한 동료들과 함께 진실을 좇는 동안 과거의 선택과 숨겨진 비밀이 하나씩 드러나고, 마지막 순간 누구를 믿을지 결정해야 한다.',
-  director:'감독 이름 예시',cast:'배우 A, 배우 B, 배우 C',showDirector:true,showCast:true,genres:'미국 작품, 드라마 영화, 미스터리 영화',features:'몰입감 강한, 반전 있는, 여운이 남는',filename:'streaming-card',ratio:'1200x900',
-  bgZoom:100,overlay:42,blur:0,logoScale:100,bgPosX:50,bgPosY:50,logoLeft:64,logoTop:390,tagX:650,tagY:380,tagWidth:470,tagSize:24,tagShadowEnabled:true,tagShadowStrength:88,tagShadowBlur:16,tagShadowDistance:3,tagShadowAngle:90,bgData:'',logoData:''
+  director:'감독 이름 예시',cast:'배우 A, 배우 B, 배우 C',showDirector:true,showCast:true,genres:'미국 작품, 드라마 영화, 미스터리 영화',features:'몰입감 강한, 반전 있는, 여운이 남는',filename:'streaming-card',ratio:'1200x800',
+  bgZoom:100,overlay:42,blur:0,logoScale:100,bgPosX:50,bgPosY:50,logoLeft:64,logoTop:390,tagX:650,tagY:340,tagWidth:470,tagSize:22,tagShadowEnabled:true,tagShadowStrength:88,tagShadowBlur:16,tagShadowDistance:3,tagShadowAngle:90,bgData:'',logoData:''
 };
-const st={ratio:'1200x900',bgPosX:50,bgPosY:50,bgData:'',logoData:'',logoMode:'image'};
+const st={ratio:'1200x800',bgPosX:50,bgPosY:50,bgData:'',logoData:'',logoMode:'image'};
 
 const GENRE_GROUPS={
-  '형식':['영화','시리즈','리미티드 시리즈','다큐멘터리','리얼리티 프로그램','애니','스탠드업 코미디'],
-  '국가 / 지역':['한국 작품','미국 작품','영국 작품','일본 작품','프랑스 작품','스페인 작품','유럽 작품','아시아 작품'],
-  '주요 장르':['드라마 영화','로맨스 영화','코미디 영화','스릴러 영화','미스터리 영화','범죄 영화','액션 영화','전쟁 영화','SF 영화','판타지 영화','공포 영화','청춘 영화','음악 영화','독립 영화'],
-  '세부 장르':['심리 스릴러','재난 영화','생존 스릴러','느와르','법정 드라마','시대극','로드 무비','버디 무비','정치 스릴러','첩보물','초자연 미스터리']
+  '형식 / 포맷':['영화','시리즈','리미티드 시리즈','미니시리즈','드라마','다큐멘터리','다큐 시리즈','리얼리티 프로그램','버라이어티','토크쇼','스탠드업 코미디','애니','애니 시리즈','애니 영화','키즈 시리즈','키즈 영화','연작 영화','옴니버스','단편 영화','콘서트 영화','스페셜'],
+  '드라마':['드라마 영화','드라마 시리즈','한국 드라마','청춘 드라마','하이틴 시리즈','가족 드라마','로맨틱 드라마','사회 문제를 다룬 드라마','정치 드라마','법정 드라마','의학 드라마','직장 드라마','휴먼 드라마','시대극','사극','성장 드라마','스포츠 드라마','음악 드라마','학교 배경 드라마','LGBTQ+ 드라마','도서 원작 드라마','실화 바탕 드라마'],
+  '로맨스':['로맨스 영화','로맨틱 코미디','로맨스 시리즈','청춘 로맨스','하이틴 로맨스','시대 로맨스','판타지 로맨스','오피스 로맨스','로맨틱 드라마','LGBTQ+ 로맨스','금지된 사랑','삼각관계','첫사랑 이야기'],
+  '스릴러 / 미스터리':['스릴러','스릴러 영화','스릴러 시리즈','미스터리 영화','미스터리 시리즈','심리 스릴러','액션 스릴러','정치 스릴러','범죄 스릴러','서스펜스','추리물','탐정물','음모 스릴러','생존 스릴러','재난 스릴러','점입가경 스릴러','법정 스릴러','테크노 스릴러','스파이 스릴러'],
+  '범죄':['범죄 영화','범죄 시리즈','범죄 사건을 다루는 콘텐츠','갱스터 영화','느와르','하이스트','강도','마피아','조직범죄','살인 미스터리','연쇄살인범','경찰','형사 & 탐정','부패 경찰','복수극','감옥 배경 콘텐츠','법 집행기관'],
+  '액션 / 어드벤처':['액션 영화','액션 시리즈','액션 & 어드벤처','액션 & 어드벤처 영화','어드벤처 영화','스파이 액션','무술 영화','전쟁 액션','슈퍼히어로','재난 영화','생존 영화','복수 액션','군사 액션','추격전','서부극'],
+  'SF / 판타지':['SF 영화','SF 시리즈','SF & 판타지','SF & 판타지 애니','판타지 영화','판타지 시리즈','디스토피아','시간 여행','우주','외계인','사이버펑크','초능력','평행세계','마법','다크 판타지','도시 판타지','신화 & 전설','괴물','포스트아포칼립스'],
+  '공포':['공포 영화','공포 시리즈','심리 공포','초자연 공포','괴물 공포','슬래셔','좀비','뱀파이어','고딕 호러','바디 호러','포크 호러','오컬트','귀신','악마','생존 공포','코미디 공포'],
+  '코미디':['코미디 영화','코미디 시리즈','블랙 코미디','로맨틱 코미디','풍자','슬랩스틱','직장 코미디','가족 코미디','하이틴 코미디','다크 코미디','버디 코미디','코미디 드라마','시트콤'],
+  '애니메이션':['애니메이션','애니 시리즈','애니 영화','일본 애니','일본 미스터리 & 스릴러 애니메이션','일본 만화 원작 시리즈','액션 애니','판타지 애니','SF 애니','로맨스 애니','코미디 애니','스포츠 애니','청춘 애니','키즈 애니'],
+  '다큐 / 리얼리티':['다큐멘터리','다큐 시리즈','사회 & 문화 다큐','역사 다큐','자연 다큐','과학 & 자연 다큐','범죄 다큐','음악 다큐','스포츠 다큐','전기 다큐','음식 & 여행 다큐','리얼리티 프로그램','경쟁 리얼리티','데이트 리얼리티','라이프스타일 리얼리티'],
+  '소재 / 테마':['학교 배경 콘텐츠','고등학교 배경 콘텐츠','청소년','성장 이야기','가족','우정','결혼','복수','정치','법정','의학','음악','스포츠','요리','여행','직장','군대','전쟁','역사','왕실','종교','사회 문제','기술','게임','예술','패션','연예계','재벌','언론','형사 & 탐정','경찰'],
+  '원작 / 제작 특성':['도서 원작','도서 원작 시리즈','소설 원작','웹툰 원작','웹 소설 원작','일본 만화 원작','일본 만화 원작 시리즈','게임 원작','실화 바탕','실제 사건 바탕','전기 영화','리메이크','연작','앙상블 캐스트','멀티캐스팅','독립 영화','아트하우스 영화'],
+  '국가 / 지역':['한국 작품','미국 작품','영국 작품','일본 작품','프랑스 작품','독일 작품','스페인 작품','이탈리아 작품','폴란드 작품','멕시코 작품','브라질 작품','아르헨티나 작품','캐나다 작품','호주 작품','인도 작품','태국 작품','대만 작품','중국 작품','홍콩 작품','터키 작품','북유럽 작품','유럽 작품','아시아 작품','중남미 작품','할리우드 영화']
 };
+
 const FEATURE_GROUPS={
-  '분위기':['긴장감 넘치는','긴박감 넘치는','감정을 파고드는','어두운','불길한','서늘한','잔잔한','몽환적인','음산한','현실적인'],
-  '감정선':['설레는','로맨틱한','애절한','먹먹한','진심 어린','희망찬','힐링되는','비극적인','운명적인','여운이 남는'],
-  '전개 / 성격':['몰입감 강한','예측불가한','반전 있는','느린 전개의','서사 중심의','심리 게임','쫓고 쫓기는','거부할 수 없는 이끌림','금지된 사랑','그들만의 비밀'],
-  '소재':['초자연 현상','시간 여행','생존기','복수극','가족 간의 이야기','우정 이야기','실화 바탕','청춘극','SF 미스터리','평단의 찬사를 받은']
+  '분위기 / 톤':['어두운','불길한','서늘한','음산한','긴장감 넘치는','긴박감 넘치는','감정을 파고드는','감성적인','잔잔한','몽환적인','현실적인','강렬한','거친','색다른','위트 있는','유쾌한','발칙한','기분 좋아지는','따뜻한','힐링되는','낭만적인','로맨틱한','애절한','먹먹한','비극적인','희망찬','감동적인','진심 어린','여운이 남는','섬뜩한','기괴한','도발적인','자극적인','감각적인','세련된'],
+  '전개 / 서사':['몰입감 강한','예측불가한','반전 있는','점입가경','느린 전개의','빠른 전개의','서사 중심의','캐릭터 중심의','심리 게임','쫓고 쫓기는','미스터리','스릴러','액션 스릴러','그들만의 비밀','음모','비밀','복수','생존','시간 여행','초자연 현상','판타지','상상의 나래','위기의 가족','또 다른 주인공','멀티캐스팅','연작','관계의 변화','숨겨진 과거','운명적인 만남','금지된 사랑','사랑과 집착 사이','거부할 수 없는 이끌림'],
+  '관계 / 감정선':['첫사랑','로맨스','삼각관계','금지된 사랑','짝사랑','재회','운명적인 사랑','우정','브로맨스','가족 간의 이야기','부모와 자녀','형제자매','위기의 가족','결혼','이혼','복잡한 관계','사랑과 집착 사이','그들만의 비밀','청춘극','성장','자아 찾기'],
+  '인물 / 직업':['경찰','형사 & 탐정','부패 경찰','의사','변호사','검사','기자','교사','학생','청소년','군인','스파이','암살자','범죄자','조직폭력배','요리사','아티스트','연예인','운동선수','정치인','기업가','재벌','왕족'],
+  '배경 / 장소':['고등학교 배경 콘텐츠','학교 배경 콘텐츠','직장','병원','법정','감옥','군대','전쟁터','시골','대도시','마이애미','뉴욕','서울','도쿄','우주','외딴섬','설원','바다','폐쇄된 공간','포스트아포칼립스 세계'],
+  '소재':['복수','범죄','강도','살인','연쇄살인','납치','실종','음모','부패','정치','사회 문제','가족','우정','청소년','결혼','불륜','집착','생존','재난','질병','죽음','기억','비밀','정체성','시간 여행','초자연 현상','괴물','마법','외계인','기술','게임','음악','패션','스포츠','요리'],
+  '원작 / 수상 / 제작':['도서 원작','소설 원작','웹툰 원작','웹 소설 원작','일본 만화 원작','게임 원작','실화 바탕','실제 사건 바탕','평단의 찬사를 받은','수상작','에미상 후보작','백상예술대상','OST','강렬한 비주얼','스타 출연진','앙상블 캐스트','멀티캐스팅','독립 제작'],
+  '타깃 / 스타일':['청춘극','청소년','성인 취향','가족이 함께 보기 좋은','데이트 나이트','정주행 추천','몰아보기 좋은','가볍게 보기 좋은','생각할 거리를 주는','대화가 필요한','주말에 보기 좋은','밤에 보기 좋은','팬덤이 강한','컬트적인','감성 자극','두뇌 싸움','긴장감 위주','캐릭터 케미','강한 여성 캐릭터','안티히어로'],
+  '스트리밍식 표현 모음':['어두운','긴장감 넘치는','긴박감 넘치는','감정을 파고드는','청춘극','그들만의 비밀','시간 여행','심리 게임','상상의 나래','위기의 가족','색다른','강렬한 비주얼','부패 경찰','형사 & 탐정','평단의 찬사를 받은','또 다른 주인공','OST','고등학교 배경 콘텐츠','사랑과 집착 사이','점입가경 스릴러']
+};
+
+
+
+const FEATURE_GROUPS={
+  '분위기 / 톤':['어두운','불길한','서늘한','음산한','긴장감 넘치는','긴박감 넘치는','감정을 파고드는','감성적인','잔잔한','몽환적인','현실적인','강렬한','거친','색다른','위트 있는','유쾌한','발칙한','기분 좋아지는','따뜻한','힐링되는','낭만적인','로맨틱한','애절한','먹먹한','비극적인','희망찬','감동적인','진심 어린','여운이 남는','섬뜩한','기괴한','도발적인','자극적인','감각적인','세련된'],
+  '전개 / 서사':['몰입감 강한','예측불가한','반전 있는','점입가경','느린 전개의','빠른 전개의','서사 중심의','캐릭터 중심의','심리 게임','쫓고 쫓기는','미스터리','스릴러','액션 스릴러','그들만의 비밀','음모','비밀','복수','생존','시간 여행','초자연 현상','판타지','상상의 나래','위기의 가족','또 다른 주인공','멀티캐스팅','연작','관계의 변화','숨겨진 과거','운명적인 만남','금지된 사랑','사랑과 집착 사이','거부할 수 없는 이끌림'],
+  '관계 / 감정선':['첫사랑','로맨스','삼각관계','금지된 사랑','짝사랑','재회','운명적인 사랑','우정','브로맨스','가족 간의 이야기','부모와 자녀','형제자매','위기의 가족','결혼','이혼','복잡한 관계','사랑과 집착 사이','그들만의 비밀','청춘극','성장','자아 찾기'],
+  '인물 / 직업':['경찰','형사 & 탐정','부패 경찰','의사','변호사','검사','기자','교사','학생','청소년','군인','스파이','암살자','범죄자','조직폭력배','요리사','아티스트','연예인','운동선수','정치인','기업가','재벌','왕족'],
+  '배경 / 장소':['고등학교 배경 콘텐츠','학교 배경 콘텐츠','직장','병원','법정','감옥','군대','전쟁터','시골','대도시','마이애미','뉴욕','서울','도쿄','우주','외딴섬','설원','바다','폐쇄된 공간','포스트아포칼립스 세계'],
+  '소재':['복수','범죄','강도','살인','연쇄살인','납치','실종','음모','부패','정치','사회 문제','가족','우정','청소년','결혼','불륜','집착','생존','재난','질병','죽음','기억','비밀','정체성','시간 여행','초자연 현상','괴물','마법','외계인','기술','게임','음악','패션','스포츠','요리'],
+  '원작 / 수상 / 제작':['도서 원작','소설 원작','웹툰 원작','웹 소설 원작','일본 만화 원작','게임 원작','실화 바탕','실제 사건 바탕','평단의 찬사를 받은','수상작','에미상 후보작','백상예술대상','OST','강렬한 비주얼','스타 출연진','앙상블 캐스트','멀티캐스팅','독립 제작'],
+  '타깃 / 스타일':['청춘극','청소년','성인 취향','가족이 함께 보기 좋은','데이트 나이트','정주행 추천','몰아보기 좋은','가볍게 보기 좋은','생각할 거리를 주는','대화가 필요한','주말에 보기 좋은','밤에 보기 좋은','팬덤이 강한','컬트적인','감성 자극','두뇌 싸움','긴장감 위주','캐릭터 케미','강한 여성 캐릭터','안티히어로'],
+  '스트리밍식 표현 모음':['어두운','긴장감 넘치는','긴박감 넘치는','감정을 파고드는','청춘극','그들만의 비밀','시간 여행','심리 게임','상상의 나래','위기의 가족','색다른','강렬한 비주얼','부패 경찰','형사 & 탐정','평단의 찬사를 받은','또 다른 주인공','OST','고등학교 배경 콘텐츠','사랑과 집착 사이','점입가경 스릴러']
 };
 
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
@@ -539,6 +576,7 @@ function ratio(v){
   $('card').style.width=w+'px';
   $('card').style.height=h+'px';
   $('card').classList.toggle('square',v==='900x900');
+  $('card').classList.toggle('ratio-6-4',v==='1200x800');
   syncRatioDependentControls(w,h);
   scaleHorizontalLayout(prevW,w);
   $('sizeLabel').textContent=`${w} × ${h}`;
@@ -651,7 +689,7 @@ $('exportBtn').onclick=async()=>{
 
 document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&$('keywordOverlay').classList.contains('open')) closeKeywordModal(); });
 
-setLogoMode('image'); syncFineFromState(); syncRatioDependentControls(1200,900); ratio('1200x900'); requestAnimationFrame(()=>{ fit(); fitSynopsis(); alignInfoToSynopsis(); });
+setLogoMode('image'); syncFineFromState(); syncRatioDependentControls(1200,800); ratio('1200x800'); requestAnimationFrame(()=>{ fit(); fitSynopsis(); alignInfoToSynopsis(); });
 })();
 </script>
 </body>
