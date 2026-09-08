@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark">
 <title>Streaming Card Maker</title>
-<!-- Public GitHub Pages build: v38 -->
+<!-- Public GitHub Pages build: v39 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Bebas+Neue&family=Black+Han+Sans&family=Bungee&family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Serif+Display&family=Do+Hyeon&family=Gugi&family=Jua&family=Montserrat:wght@300;400;500;600;700;800;900&family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Noto+Serif+KR:wght@400;500;600;700;800;900&family=Oswald:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Raleway:wght@300;400;500;600;700;800;900&family=Roboto+Condensed:wght@300;400;500;600;700;800;900&family=Song+Myung&display=swap" rel="stylesheet">
@@ -135,7 +135,7 @@ button{user-select:none}.app{display:grid;grid-template-columns:400px 1fr;min-he
     </section>
 
     <section class="group grid2">
-      <label>배경 확대<input id="bgZoom" type="range" min="100" max="220" value="100"></label>
+      <label>배경 크기<input id="bgZoom" type="range" min="72" max="220" value="100"></label>
       <label>어둡기<input id="overlay" type="range" min="0" max="85" value="45"></label>
       <label>블러<input id="blur" type="range" min="0" max="12" value="0"></label>
       <label>로고 크기<input id="logoScale" type="range" min="50" max="180" value="100"></label>
@@ -147,7 +147,7 @@ button{user-select:none}.app{display:grid;grid-template-columns:400px 1fr;min-he
         <label>가로 미세조정<input id="bgFineX" type="range" min="-500" max="1500" value="500"></label>
         <label>세로 미세조정<input id="bgFineY" type="range" min="-500" max="1500" value="500"></label>
       </div>
-      <p class="cropHint">배경은 카드 위에서 직접 드래그해서 좌우·위아래로 자유롭게 움직일 수 있어. 마우스 휠이나 배경 확대 슬라이더로 확대할 수 있고, Shift+드래그는 더 천천히 움직여.</p>
+      <p class="cropHint">배경은 카드 위에서 직접 드래그해서 좌우·위아래로 자유롭게 움직일 수 있어. 마우스 휠이나 배경 크기 슬라이더로 확대/축소할 수 있고, 너무 줄어들어 프레임 가로보다 작아지지는 않게 제한돼. Shift+드래그는 더 천천히 움직여.</p>
     </section>
 
     <section class="group"><h2>기본 정보</h2>
@@ -450,7 +450,7 @@ function syncFineFromState(){ $('bgFineX').value=Math.round(st.bgPosX*10); $('bg
 function syncStateFromFine(){ st.bgPosX=+$('bgFineX').value/10; st.bgPosY=+$('bgFineY').value/10; bgStyle(); }
 $('bgFineX').addEventListener('input',syncStateFromFine); $('bgFineY').addEventListener('input',syncStateFromFine);
 $('cropResetBtn').onclick=()=>{ st.bgPosX=50; st.bgPosY=50; $('bgZoom').value=100; syncFineFromState(); bgStyle(); };
-$('card').addEventListener('wheel',e=>{ if(!st.bgData) return; e.preventDefault(); const next=Math.max(100,Math.min(220,+$('bgZoom').value+(e.deltaY<0?2:-2))); $('bgZoom').value=next; bgStyle(); },{passive:false});
+$('card').addEventListener('wheel',e=>{ if(!st.bgData) return; e.preventDefault(); const next=Math.max(72,Math.min(220,+$('bgZoom').value+(e.deltaY<0?2:-2))); $('bgZoom').value=next; bgStyle(); },{passive:false});
 
 function setRating(v){
   document.querySelectorAll('.ratingChoice').forEach(b=>b.classList.toggle('active',b.dataset.rating===v));
